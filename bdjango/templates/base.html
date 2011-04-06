@@ -1,0 +1,20 @@
+{% extends "html_frame.html" %}
+
+{% block frame_head %}
+	<link rel="stylesheet" type="text/css" href="/css/petit.css" />
+	{% block head %}{% endblock %}
+{% endblock %}
+
+
+{% block title %}Litla Gar&eth;arsd&oacute;ttir{% endblock %}
+
+{% block frame_body %}
+<div id="container">
+	<div id="headerblock">
+		<h1>Litla Gar&eth;arsd&oacute;ttir</h1>
+	</div>
+	<div id="content">
+		{% block content %}{% endblock %}
+	</div>
+</div>
+{% endblock %}
