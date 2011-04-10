@@ -1,0 +1,9 @@
+{%if field.is_hidden%}
+	{{field}}
+{%else%}
+<div class="item {{field.html_name}} {{ field.field.base_css }}">
+		{%if field.errors%}{{ field.errors }}{%endif%}
+		{{field.label_tag}}
+		<div class="field">{{ field }}</div>
+	</div>
+{%endif%}

@@ -1,4 +1,5 @@
 {% extends "html_frame.html" %}
+{% load i18n %}
 
 {% block frame_head %}
 	<link rel="stylesheet" type="text/css" href="/css/petit.css" />
@@ -6,14 +7,22 @@
 {% endblock %}
 
 
-{% block title %}Litla Gar&eth;arsd&oacute;ttir{% endblock %}
+{% block title %}{{ site_title }}{% endblock %}
 
 {% block frame_body %}
 <div id="container">
 	<div id="headerblock">
-		<h1>Litla Gar&eth;arsd&oacute;ttir</h1>
+		<h1>{{ site_title }}</h1>
+	</div>
+	<div id="sidebar">
+		<ul>
+			<li><a href="/blog/">{% trans "Blog" %}</a></li>
+			<li><a href="/photologue/gallery/">{% trans "Gallery" %}</a></li>
+			<li><a href="/guestbook/">{% trans "Guestbook" %}</a></li>
+		</ul>
 	</div>
 	<div id="content">
+		<h2>{% block page_header %}{% endblock %}</h2>
 		{% block content %}{% endblock %}
 	</div>
 </div>

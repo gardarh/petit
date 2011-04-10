@@ -24,6 +24,18 @@ class Blog(models.Model):
 	class Meta:
 		ordering = ['date']
 
+class Guestbook(models.Model):
+	author = models.CharField(max_length=256)
+	date = models.DateTimeField(auto_now_add=True)
+	text = models.TextField()
+	display = models.BooleanField(default=True)
+
+	def __unicode__(self):
+		return '%s (%s)' % (self.author,self.date)
+
+	class Meta:
+		ordering = ['date']
+
 class Album(models.Model):
 	title = models.CharField(max_length=256,null=True,blank=True)
 	text = models.TextField(null=True,blank=True)

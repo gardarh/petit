@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block page_header %}{% trans "Guestbook" %}{% endblock %}
+{% block content %}
+<div class="guestbook">
+	{% for entry in entries %}
+	<div class="entry">
+		<div class="author">
+			{{ entry.author }} | {{ entry.date|date:"j F Y" }}
+		</div>
+		<div class="text">
+			{{ entry.text }}
+		</div>
+	</div>
+	{% endfor %}
+	<div>
+		<a href="/guestbook/add/">{% trans "Add entry" %}</a>
+	</div>
+</div>
+{% endblock %}
+

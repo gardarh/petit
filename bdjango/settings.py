@@ -76,6 +76,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+	'django.contrib.auth.context_processors.auth',
+	'django.contrib.messages.context_processors.messages',
+	'django.core.context_processors.debug',
+	'bdjango.petit.context_processors.site_config',
+	)
+
 ROOT_URLCONF = 'bdjango.urls'
 
 TEMPLATE_DIRS = (
@@ -90,9 +97,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
 	'django.contrib.admindocs',
+	'photologue',
 	'petit'
 
 )
+
+SITE_TITLE = 'Site name'
+SITE_PASSWORD = 'foo'
 
 try:
 	from localsettings import *

@@ -33,6 +33,20 @@ a img { border: none; }
 	margin-right: auto;
 	width: 1000px;
 	background-color: #FFF;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	padding: 10px;
+	min-height: 120px;
+}
+
+#sidebar {
+	width: 200px;
+	display: inline-block;
+}
+
+#content {
+	margin-left: 200px;
 }
 
 .blogrecord {
@@ -48,4 +62,59 @@ a img { border: none; }
 	display: inline-block;
 } .blogrecord .text {
 	clear:both;
+}
+
+/* Generic form styles*/
+.form_container{
+	margin:1em auto;
+
+} .form_container .item{
+	margin:6px;
+}.form_container .item label{
+		display:inline-block;
+		font-size:0.8em;
+		color:#666;
+		line-height: 18px;
+		height:18px;
+}.form_container .field input, .form_container .field textarea{
+		border:1px solid #666;
+		font-size: 1.2em;
+		background-color: #EEE;
+		font-family: arial,sans-serif;
+} .form_container .field select {
+	font-size: 1.2em;
+		font-family: arial,sans-serif;
+} .form_container .currency {
+		float: left
+} .form_container .price {
+		clear: none;
+		float: left
+} .form_container #id_price {
+		width: 80px;
+		text-align:right;
+}
+.item{clear:both;}
+.input_date{
+	width:6em;
+}
+.input_time{
+	width:3em;
+}
+
+input[type=submit] {
+	border: 1px solid #666;
+	background-color: #EEE;
+
+}
+
+.guestbook {
+} .guestbook .entry {
+	margin-bottom: 1em;
+} .guestbook .entry .author {
+	font-size: 0.8em;
+	font-color: #AAA;
+	margin-bottom: 0.2em;
+} .guestbook .entry .text {
+	border: 1px dotted black;
+	padding: 2px;
 }
