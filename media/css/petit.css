@@ -37,12 +37,12 @@ a img { border: none; }
 	-moz-border-radius: 20px;
 	border-radius: 20px;
 	padding: 10px;
-	min-height: 120px;
+	min-height: 150px;
 }
 
 #sidebar {
 	width: 200px;
-	display: inline-block;
+	position: absolute;
 }
 
 #content {
