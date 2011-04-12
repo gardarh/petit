@@ -4,16 +4,16 @@ import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
-
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
-	(r'^photologue/', include('photologue.urls')),
+	#(r'^photologue/', include('photologue.urls')),
+	(r'^names/', include('names.urls')),
 
     (r'^img/(.*)$','django.views.static.serve', {'document_root': '%s%s' % (settings.MEDIA_ROOT, 'img')}),
     (r'^js/(.*)$','django.views.static.serve',  {'document_root': '%s%s' % (settings.MEDIA_ROOT, 'js')}),
     (r'^css/(.*)$','django.views.static.serve',  {'document_root': '%s%s' % (settings.MEDIA_ROOT, 'css')}),
     (r'^uploaded/(.*)$','django.views.static.serve',  {'document_root': '%s%s' % (settings.MEDIA_ROOT, 'uploaded')}),
-
+    (r'^%s/(.*)$' % (settings.GALLERY_DIR,),'django.views.static.serve' , {'document_root': '%s/%s' % (settings.MEDIA_ROOT, 'gallery')}),
 )
 
 urlpatterns += patterns('petit.views',
@@ -24,7 +24,5 @@ urlpatterns += patterns('petit.views',
     (r'^blog/$', 'blog'),
     (r'^guestbook/$', 'guestbook'),
     (r'^guestbook/add/$', 'guestbook_form'),
-    (r'^names/$', 'names'),
-
-
+    (r'^images/(\d+)/$', 'images'),
 	)

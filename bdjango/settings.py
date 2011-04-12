@@ -33,6 +33,8 @@ TIME_ZONE = 'UTC'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 #LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'is'
+import locale
+locale.setlocale(locale.LC_ALL,locale.normalize(LANGUAGE_CODE))
 
 SITE_ID = 1
 
@@ -97,13 +99,23 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
 	'django.contrib.admindocs',
-	'photologue',
-	'petit'
+	#'photologue',
+	'petit',
+	'names'
 
 )
 
+DATADIR = '/srv/petit/bdjango/data/'
+NAMES_DB = '%s/names.json' % (DATADIR,)
 SITE_TITLE = 'Site name'
 SITE_PASSWORD = 'foo'
+SITE_LOGIN_URL = '/login/'
+
+GALLERY_DIR = 'gallery'
+GALLERY_THUMBNAIL_PATH = '/thumbnails/'
+GALLERY_IMAGE_PATH = '/images/'
+GALLERY_THUMB_MAX_DIMENSION = 200
+GALLERY_IMG_MAX_DIMENSION = 800
 
 try:
 	from localsettings import *
