@@ -1,0 +1,12 @@
+{% extends "names/base.html" %}
+{% load i18n %}
+
+{% block content%}
+	<div>
+		<b>OK</b><br />
+		{% for name in oked %}{{ name }}<br />{% endfor %}
+		<br />
+		<b>VETO</b><br />
+		{% for name in vetoed %}{{ name }}<br />{% endfor %}
+	</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+<div class="blogrecord">
+	<div class="title">
+		{{ blog.title }}
+	</div>
+	<div class="author">
+		{{ blog.author.get_full_name }}
+	</div>
+	<div class="text">
+		{{ blog.text }}
+	</div>
+	<div class="images">
+		{% for image in blog.images.all %}
+		<a href="/images/{{ image.id }}/"><img src="{{ image.get_thumb_url }}" /></a>
+		{% endfor %}
+	</div>
+</div>
+

@@ -1,21 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 {% for blog in blogs %}
-<div class="blogrecord">
-	<div class="title">
-		{{ blog.title }}
-	</div>
-	<div class="author">
-		{{ blog.author.get_full_name }}
-	</div>
-	<div class="text">
-		{{ blog.text }}
-	</div>
-	<div class="images">
-		{% for image in blog.images.all %}
-		<img src="{{ image.thumbnail }}" />
-		{% endfor %}
-	</div>
-</div>
+{% include "blogrecord.html" %}
 {% endfor %}
 {% endblock %}

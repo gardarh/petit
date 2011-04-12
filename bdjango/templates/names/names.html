@@ -1,0 +1,26 @@
+{% extends "names/base.html" %}
+{% load i18n %}
+
+{% block content%}
+	<div id="name-section">
+		<div id="name">
+		{{ name }} Lóa
+		</div>
+		<div>
+			<form method="POST" action=".">
+				{% csrf_token %}
+				<input type="hidden" name="name" value="{{ name }}" />
+				<input type="submit" name="yes" value="{% trans 'OK' %}" class="yes-button" />
+				<input type="submit" name="no" value="{% trans 'Veto' %}" class="no-button" />
+			</form>
+		</div>
+	</div>
+
+	<div class="stats">
+		<div>{% trans "Remaining:" %} {{ num_remaining }}</div>
+		<div>{% trans "OKed:" %} {{ num_ok }}</div>
+		<div>{% trans "VETOed:" %} {{ num_veto }}</div>
+		<div><a href="view/">{% trans "See names" %}</a></div>
+		<div><a href="compare/">{% trans "Compare lists" %}</a></div>
+	</div>
+{% endblock %}

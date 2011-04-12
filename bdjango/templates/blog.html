@@ -1,26 +1,7 @@
 {% extends "base.html" %}
-{% load i18n %}
 {% block page_header %}{% trans "Blog" %}{% endblock %}
 {% block content %}
 {% for blog in blogs %}
-<div class="blogrecord">
-	<div class="title">
-		{{ blog.title }}
-	</div>
-	<div class="author">
-		{{ blog.author.get_full_name }}
-	</div>
-	<div class="text">
-		{{ blog.text|linebreaks }}
-	</div>
-	{% comment %}
-	<div class="images">
-		{% for image in blog.images.all %}
-		<img src="{{ image.thumbnail }}" />
-		{% endfor %}
-	</div>
-	{% endcomment %}
-</div>
+{% include "blogrecord.html" %}
 {% endfor %}
 {% endblock %}
-

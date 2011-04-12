@@ -1,8 +1,9 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from django.contrib.auth.decorators import login_required
-from models import Blog, Guestbook
+from models import Blog, Guestbook, Image
 from forms import GuestbookForm, PasswordForm
+from decorators import password_protect
 import settings
 
 def login(request):
@@ -19,6 +20,12 @@ def login(request):
 			}
 	return HttpResponse(loader.get_template("login.html").render(RequestContext(request,context)))
 
+def logout(request):
+	response = HttpResponseRedirect(settings.SITE_LOGIN_URL)
+	response.delete_cookie('password')
+	return response
+
+@password_protect
 def frontpage(request):
 	blogs = Blog.objects.filter(display=True).order_by('date')[0:10]
 
@@ -27,6 +34,7 @@ def frontpage(request):
 			}
 	return HttpResponse(loader.get_template("frontpage.html").render(RequestContext(request,context)))
 
+@password_protect
 def blog(request):
 	blogs = Blog.objects.filter(display=True).order_by('date')
 
@@ -36,6 +44,7 @@ def blog(request):
 	return HttpResponse(loader.get_template("blog.html").render(RequestContext(request,context)))
 
 
+@password_protect
 def guestbook(request):
 	entries = Guestbook.objects.filter(display=True).order_by('date')[0:20]
 
@@ -44,6 +53,7 @@ def guestbook(request):
 			}
 	return HttpResponse(loader.get_template("guestbook.html").render(RequestContext(request,context)))
 
+@password_protect
 def guestbook_form(request):
 	instance = Guestbook(display=True)
 	guestbook_form = GuestbookForm(instance=instance)
@@ -59,6 +69,10 @@ def guestbook_form(request):
 			}
 	return HttpResponse(loader.get_template("guestbook_form.html").render(RequestContext(request,context)))
 
-def names(request):
-	pass
-	
+def images(request, image_id):
+	image = Image.objects.get(id=int(image_id))
+
+	context = {
+			'image': image
+			}
+	return HttpResponse(loader.get_template("image.html").render(RequestContext(request,context)))

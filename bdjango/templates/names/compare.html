@@ -1,0 +1,53 @@
+{% extends "names/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Compare lists" %}{% endblock %}
+
+{% block content%}
+<a href="/names/{{ person1 }}/">{% trans "Go back to choosing names" %}</a>
+{% if person1 and person2 %}
+<h2>
+	{% blocktrans with person1 as p1 and person2 as p2 %}Compare lists from {{ p1 }} and {{ p2 }}{% endblocktrans %}
+</h2>
+
+<div class="person pjoint">
+	<div class="heading">
+		{% trans "Common choices" %}
+	</div>
+	<ul class="namelist">
+		{% for name in intersection %}
+		<li class="singlename">{{name}}</li>
+		{% endfor %}
+	</ul>
+</div>
+
+<div class="person p1">
+	<div class="heading">
+		{% blocktrans with person1 as person %}{{ person }} exclusive choices{% endblocktrans %}:
+	</div>
+	<ul class="namelist">
+		{% for name in p1oked %}
+		<li class="singlename">{{name}}</li>
+		{% endfor %}
+	</ul>
+</div>
+
+<div class="person p2">
+	<div class="heading">
+		{% blocktrans with person2 as person %}{{ person }} exclusive choices{% endblocktrans %}:
+	</div>
+	<ul class="namelist">
+		{% for name in p2oked %}
+		<li class="singlename">{{name}}</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endif %}
+
+<div style="clear:both;">
+	<form method="GET" action=".">
+	{% include "base_form.html" with form=compare_form %}
+	<input type="submit" name="submit" value="{% trans 'Compare' %}" />
+	</form>
+</div>
+{% endblock %}

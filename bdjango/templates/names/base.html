@@ -1,0 +1,72 @@
+{% extends "html_frame.html" %}
+{% load i18n %}
+{% block frame_head %}
+	<style type="text/css">
+		#names-container {
+			margin: 0px auto;
+			font-family: Georgia, Helvetica, Helvetica Neue, Arial;
+		}
+		#name-section {
+			text-align: center;
+			width: 100%;
+		}
+		#name {
+			font-size: 150px;
+			margin-top: 60px;
+			margin-bottom: 60px;
+		}
+		input[type=submit] {
+			font-size: 20px;
+		}
+		.yes-button {
+			background-color: green;
+			border: 1px solid black;
+			padding: 10px;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+		.no-button {
+			background-color: red;
+			border: 1px solid black;
+			padding: 10px;
+			padding-left: 20px;
+			padding-right: 20px;
+			margin-left: 100px;
+		}
+		.stats {
+			margin-top: 20px;
+		}
+
+		.person {
+			margin-bottom: 1em;
+		} .person .heading {
+			font-weight: bold;
+			font-size: 1.2em;
+			margin-bottom: 0.5em;
+		} .person .namelist {
+			background-color: #EEE;
+			border: 1px solid black;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			width: 200px;
+		} .person .namelist .singlename {
+			margin-bottom: 5px;
+		}
+		.p1 {
+			float: left;
+		}
+		.p2 {
+			float: left;
+			margin-left: 20px;
+		}
+	</style>
+	{% block header %}{% endblock %}
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block frame_body %}
+<div id="names-container">
+	{% block content %}{% endblock %}
+{% endblock %}
+
