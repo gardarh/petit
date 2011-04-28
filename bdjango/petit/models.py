@@ -83,6 +83,18 @@ class Album(models.Model):
 	images = models.ManyToManyField(Image,blank=True)
 	date = models.DateTimeField(null=True,blank=True)
 	display = models.BooleanField(default=True)
+	display_image = models.ForeignKey(Image,related_name='display_image')
+
+	class Meta:
+		ordering = ['date']
 
 	def __unicode__(self):
 		return '%s (%s)' % (self.title, self.date)
+
+class Page(models.Model):
+	heading = models.CharField(max_length=64)
+	slug = models.SlugField(max_length=64,primary_key=True)
+	content = models.TextField(blank=True)
+
+	def __unicode__(self):
+		return '%s' % (self.heading,)

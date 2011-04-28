@@ -1,7 +1,9 @@
 {% extends "names/base.html" %}
 {% load i18n %}
 
+{% block title %}{% trans "Namepicker" %}: {{ name }}{% endblock title %}
 {% block content%}
+{% if name %}
 	<div id="name-section">
 		<div id="name">
 		{{ name }} Lóa
@@ -15,11 +17,18 @@
 			</form>
 		</div>
 	</div>
+{% else %}
+<div id="name-section">
+	{% trans "No more names!" %}
+</div>
+{% endif %}
 
 	<div class="stats">
-		<div>{% trans "Remaining:" %} {{ num_remaining }}</div>
-		<div>{% trans "OKed:" %} {{ num_ok }}</div>
-		<div>{% trans "VETOed:" %} {{ num_veto }}</div>
+		{% if last_decision.1 %}<div><form method="POST" action=".">{% csrf_token %}<input type="hidden" value="{{last_decision.1}}" name="name" />{% trans "Last decision" %}: {% if last_decision.0 == '0' %}{% trans "Decline" %}{%endif %}{% if last_decision.0 == '1' %}{% trans "Approve" %}{% endif %} {{ last_decision.1 }} <input type="submit" name="cancel" value="{% trans 'Cancel' %}" /></form></div>{% endif %}
+		{% if name %}<div><a href="http://is.wikipedia.org/wiki/{{ name }}">{{ name }} wiki</a></div>{% endif %}
+		<div>{% trans "Remaining" %}: {{ num_remaining }}</div>
+		<div>{% trans "OKed" %}: {{ num_ok }}</div>
+		<div>{% trans "VETOed" %}: {{ num_veto }}</div>
 		<div><a href="view/">{% trans "See names" %}</a></div>
 		<div><a href="compare/">{% trans "Compare lists" %}</a></div>
 	</div>

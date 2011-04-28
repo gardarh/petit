@@ -20,9 +20,12 @@ urlpatterns += patterns('petit.views',
     (r'^login/$', 'login'),
     (r'^logout/$', 'logout'),
 
-    (r'^$', 'frontpage'),
+	(r'^$', 'page', {'slug':'forsida', 'hide_heading': True}),
     (r'^blog/$', 'blog'),
     (r'^guestbook/$', 'guestbook'),
     (r'^guestbook/add/$', 'guestbook_form'),
     (r'^images/(\d+)/$', 'images'),
+    (r'^albums/$', 'albums'),
+    (r'^albums/(\d+)/$', 'album'),
+    (r'^albums/(\d+)/(\d+)/$', 'album_image'),
 	)

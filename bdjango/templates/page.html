@@ -3,5 +3,7 @@
 {% if not hide_heading %}
 <h2>{{ page.heading }}</h2>
 {% endif %}
-{{ page.text }}
+<div class="pagetext">
+{{ page.content }}
+</div>
 {% endblock %}

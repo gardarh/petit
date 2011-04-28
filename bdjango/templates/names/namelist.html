@@ -1,12 +1,27 @@
 {% extends "names/base.html" %}
 {% load i18n %}
 
+{% block title %}{% trans "Your selected names" %}{% endblock %}
 {% block content%}
-	<div>
-		<b>OK</b><br />
-		{% for name in oked %}{{ name }}<br />{% endfor %}
-		<br />
-		<b>VETO</b><br />
-		{% for name in vetoed %}{{ name }}<br />{% endfor %}
+<div class="person">
+	<div class="heading">
+		{% trans "Approved names" %}
 	</div>
+	<ul class="namelist">
+		{% for name in oked %}
+		<li class="singlename">{{name}} (<a href="http://is.wikipedia.org/wiki/{{ name }}">wiki</a>)</li>
+		{% endfor %}
+	</ul>
+</div>
+
+<div class="person">
+	<div class="heading">
+		{% trans "Disapproved names" %}
+	</div>
+	<ul class="namelist">
+		{% for name in vetoed %}
+		<li class="singlename">{{name}} (<a href="http://is.wikipedia.org/wiki/{{ name }}">wiki</a>)</li>
+		{% endfor %}
+	</ul>
+</div>
 {% endblock %}

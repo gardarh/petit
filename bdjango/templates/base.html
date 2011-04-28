@@ -15,12 +15,15 @@
 		<h1>{{ site_title }}</h1>
 	</div>
 	<div id="sidebar">
+		{% if not hide_sidebar %}
 		<ul>
+			<li><a href="/">{% trans "Frontpage" %}</a></li>
 			<li><a href="/blog/">{% trans "Blog" %}</a></li>
-			<li><a href="/photologue/gallery/">{% trans "Gallery" %}</a></li>
+			<li><a href="/albums/">{% trans "Albums" %}</a></li>
 			<li><a href="/guestbook/">{% trans "Guestbook" %}</a></li>
 			<li><a href="/logout/">{% trans "Log out" %}</a></li>
 		</ul>
+		{% endif %}
 	</div>
 	<div id="content">
 		<h2>{% block page_header %}{% endblock %}</h2>

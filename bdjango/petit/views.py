@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from django.contrib.auth.decorators import login_required
-from models import Blog, Guestbook, Image
+from models import Blog, Guestbook, Image, Album, Page
 from forms import GuestbookForm, PasswordForm
 from decorators import password_protect
 import settings
@@ -17,6 +17,7 @@ def login(request):
 			return response
 	context = {
 			'password_form': password_form
+			, 'hide_sidebar': True
 			}
 	return HttpResponse(loader.get_template("login.html").render(RequestContext(request,context)))
 
@@ -26,31 +27,19 @@ def logout(request):
 	return response
 
 @password_protect
-def frontpage(request):
-	blogs = Blog.objects.filter(display=True).order_by('date')[0:10]
-
-	context = {
-			'blogs': blogs
-			}
-	return HttpResponse(loader.get_template("frontpage.html").render(RequestContext(request,context)))
+def page(request,slug,hide_heading=False):
+	context = {'page': Page.objects.get(slug=slug), 'hide_heading': hide_heading}
+	return HttpResponse(loader.get_template("page.html").render(RequestContext(request,context)))
 
 @password_protect
 def blog(request):
-	blogs = Blog.objects.filter(display=True).order_by('date')
-
-	context = {
-			'blogs': blogs
-			}
+	context = { 'blogs': Blog.objects.filter(display=True).order_by('date') }
 	return HttpResponse(loader.get_template("blog.html").render(RequestContext(request,context)))
 
 
 @password_protect
 def guestbook(request):
-	entries = Guestbook.objects.filter(display=True).order_by('date')[0:20]
-
-	context = {
-			'entries': entries
-			}
+	context = { 'entries': Guestbook.objects.filter(display=True).order_by('date')[0:20] }
 	return HttpResponse(loader.get_template("guestbook.html").render(RequestContext(request,context)))
 
 @password_protect
@@ -69,10 +58,24 @@ def guestbook_form(request):
 			}
 	return HttpResponse(loader.get_template("guestbook_form.html").render(RequestContext(request,context)))
 
+@password_protect
 def images(request, image_id):
-	image = Image.objects.get(id=int(image_id))
-
-	context = {
-			'image': image
-			}
+	context = { 'image': Image.objects.get(id=int(image_id)) }
 	return HttpResponse(loader.get_template("image.html").render(RequestContext(request,context)))
+
+@password_protect
+def albums(request,album_id=None):
+	context = { 'albums': Album.objects.all().order_by('-date') }
+	return HttpResponse(loader.get_template("albums.html").render(RequestContext(request,context)))
+
+@password_protect
+def album(request,album_id):
+	context = { 'album': Album.objects.get(id=int(album_id)) }
+	return HttpResponse(loader.get_template("album.html").render(RequestContext(request,context)))
+
+@password_protect
+def album_image(request,album_id,image_id):
+	album = Album.objects.get(id=int(album_id))
+	image = album.objects.get(id=int(image_id))
+	context = { 'album': album, 'image': image }
+	return HttpResponse(loader.get_template("album_image.html").render(RequestContext(request,context)))

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="album">
+	{% for image in album.images.all %}
+	<div class="album-image">
+		<div class="display-image">
+			{% if album.display_image %}
+			<div class="display-image-image">
+				<a href="{{ image.id }}/"><img src="{{ image.get_thumb_url }}" /></a>
+			</div>
+			{% endif %}
+			{% if image.text %}
+			<div class="display-image-caption">
+				<a href="{{ image.id }}/">{{ image.text }}</a>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
+

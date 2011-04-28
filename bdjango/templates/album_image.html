@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="album">
+	{% for image in album.images.all %}
+	<div class="album-image">
+		<div class="display-image">
+			{% if album.display_image %}
+			<div class="display-image-image">
+				<img src="{{ image.get_img_url }}" />
+			</div>
+			{% endif %}
+			{% if image.text %}
+			<div class="display-image-caption">
+				{{ image.text }}
+			</div>
+			{% endif %}
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
+
+
