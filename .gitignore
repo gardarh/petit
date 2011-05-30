@@ -1,2 +1,5 @@
 *.pyc
 .*.sw?
+media/uploaded/*
+media/gallery/*
+bdjango/localsettings.py
