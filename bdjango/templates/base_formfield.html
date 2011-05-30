@@ -1,7 +1,7 @@
 {%if field.is_hidden%}
 	{{field}}
 {%else%}
-<div class="item {{field.html_name}} {{ field.field.base_css }}">
+<div class="item {{field.html_name}} {{ field.field.base_css }} {{ add_class }}{% if add_fieldclass %} {{field.html_name}}{% endif %}">
 		{%if field.errors%}{{ field.errors }}{%endif%}
 		{{field.label_tag}}
 		<div class="field">{{ field }}</div>

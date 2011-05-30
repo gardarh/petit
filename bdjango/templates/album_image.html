@@ -2,22 +2,63 @@
 {% load i18n %}
 {% block content %}
 <div class="album">
-	{% for image in album.images.all %}
-	<div class="album-image">
-		<div class="display-image">
-			{% if album.display_image %}
-			<div class="display-image-image">
-				<img src="{{ image.get_img_url }}" />
-			</div>
-			{% endif %}
-			{% if image.text %}
-			<div class="display-image-caption">
-				{{ image.text }}
-			</div>
-			{% endif %}
+	<div class="image-head">
+		{% if next_image %}
+		<div class="previous-image image-link">
+			<a href="/albums/{{ album.id }}/{{ next_image.id }}/">&lt;</a>
+		</div>
+		{% endif %}
+		{% if previous_image %}
+		<div class="next-image image-link">
+			<a href="/albums/{{ album.id }}/{{ previous_image.id }}/">&gt;</a>
+		</div>
+		{% endif %}
+		{% if image.title%}
+		<div class="image-title">
+			{{ image.title}}
+		</div>
+		{% endif %}
+	</div>
+
+	<div class="full-image">
+		<div class="image">
+			<img src="{{ image.get_img_url }}" />
+		</div>
+
+		{% if user.is_authenticated %}
+		<div class="caption-edit">
+			<form method="POST" action=".">
+				{% csrf_token %}
+				{% include "base_form.html" with form=titleform %}
+				<input type="submit" value="{% trans 'Submit new title' %}" name="submit_title" />
+			</form>
+		</div>
+		{% endif %}
+
+		{% if image.text %}
+		<div class="caption">
+			{{ image.text }}
+		</div>
+		{% endif %}
+	</div>
+
+	<div class="image-comments">
+		{% for comment in image.imagecomment_set.all %}
+		<div class="image-comment">
+			<div class="name">{{ comment.name }}</div>
+			<div class="date">{{ comment.date|date:"j F, H:i" }}</div>
+			<div class="comment">{{ comment.comment }}</div>
+		</div>
+		{% endfor %}
+
+		<div class="comment-form">
+			<form method="POST" action=".">
+				{% csrf_token %}
+				{% include "base_form.html" with form=comment_form %}
+				<input type="submit" name="submit_comment" value="{% trans 'Add comment' %}" />
+			</form>
 		</div>
 	</div>
-	{% endfor %}
 </div>
 {% endblock %}
 

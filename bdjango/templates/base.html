@@ -3,6 +3,12 @@
 
 {% block frame_head %}
 	<link rel="stylesheet" type="text/css" href="/css/petit.css" />
+	<script type="text/javascript" src="/js/jquery-1.6.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".messages li").fadeTo(6000,1).fadeOut(2000);
+		});
+	</script>
 	{% block head %}{% endblock %}
 {% endblock %}
 
@@ -26,6 +32,13 @@
 		{% endif %}
 	</div>
 	<div id="content">
+		{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
 		<h2>{% block page_header %}{% endblock %}</h2>
 		{% block content %}{% endblock %}
 	</div>

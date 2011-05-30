@@ -1,8 +1,11 @@
+import urllib
+from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from django.contrib.auth.decorators import login_required
-from models import Blog, Guestbook, Image, Album, Page
-from forms import GuestbookForm, PasswordForm
+from django.contrib import messages
+from models import Blog, Guestbook, Image, Album, Page, ImageComment
+from forms import GuestbookForm, PasswordForm, ImageTitleForm, ImageCommentForm
 from decorators import password_protect
 import settings
 
@@ -75,7 +78,32 @@ def album(request,album_id):
 
 @password_protect
 def album_image(request,album_id,image_id):
+
 	album = Album.objects.get(id=int(album_id))
-	image = album.objects.get(id=int(image_id))
-	context = { 'album': album, 'image': image }
+	image = Image.objects.get(id=int(image_id), album=album)
+	titleform = None
+	comment_instance = ImageComment(image=image,ip=request.META['REMOTE_ADDR'],name=request.COOKIES.get('comment_name',None))
+	comment_form = ImageCommentForm(instance=comment_instance, data=request.POST if request.method == "POST" and 'submit_comment' in request.POST else None)
+	if request.method == "POST" and 'submit_comment' in request.POST and comment_form.is_valid():
+		comment_form.save()
+		messages.success(request, _("Comment added"))
+		response = HttpResponseRedirect('/albums/%d/%d' % (album.id, image.id))
+		response.set_cookie('comment_name', value=comment_form.cleaned_data['name'].encode("UTF-8"), max_age=60*60*24*100)
+		return response
+
+	if request.user.is_authenticated():
+		titleform = ImageTitleForm(instance=image, data=request.POST if request.method == "POST" and 'submit_title' in request.POST else None)
+		if request.method == "POST" and titleform.is_valid() and 'submit_title' in request.POST:
+			titleform.save()
+			messages.success(request, _("Title saved"))
+			return HttpResponseRedirect('/albums/%d/%d' % (album.id, image.id))
+
+	context = {
+			'album': album
+			, 'image': image
+			, 'titleform': titleform
+			, 'next_image': album.next_image(image)
+			, 'previous_image': album.previous_image(image)
+			, 'comment_form': comment_form
+			}
 	return HttpResponse(loader.get_template("album_image.html").render(RequestContext(request,context)))

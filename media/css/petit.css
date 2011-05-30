@@ -12,10 +12,20 @@ body {
 
 h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
 
-h1 { font-size: 3em; line-height: 1; }
-h2 { font-size: 1.5em; }
-h3 { font-size: 1.5em; line-height: 1; }
-h4 { font-size: 1.2em; line-height: 1.25; }
+h1 {
+	font-size: 2em; 
+	line-height: 1; 
+	font-weight:bold;
+	text-align:center;
+	margin-bottom: 0.5em;
+}
+h2 {
+	font-size: 1.5em;
+}
+h3 {
+	font-size: 1.5em;
+	line-height: 1;
+}
 
 td, th { 
 	padding: 2px; 
@@ -23,6 +33,49 @@ td, th {
 }
 
 a img { border: none; }
+a {
+	color: #800;
+} a:hover {
+	color: #C44;
+}
+
+li ul {
+	margin: 0;
+}
+ul {
+	margin: 0 1.5em 1.5em 0;
+	padding-left: 3.333em;
+	list-style-type: disc;
+}
+
+.messages, .errorlist {
+	padding: 0px;
+	margin: 0px;
+} .messages li, .errorlist li {
+	margin-left: 0px;
+	background-repeat: no-repeat;
+	background-position: 3px 3px;
+	color: #333333;
+	padding: 2px 2px 2px 25px;
+	margin-bottom: 10px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	list-style-type: none;
+} .messages li.success {
+	background-image: url('/img/icons/tick.png');
+	background-color: #d4f685;
+	border: 1px solid #749e1e;
+} .messages li.error, ul.errorlist li {
+	background-image: url('/img/icons/cross.png');
+	background-color: #fdcea4;
+	border: 1px solid #c3450a;
+}
+
+ul.errorlist li {
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
 
 /********************/
 /* stuff comes here */
@@ -31,7 +84,7 @@ a img { border: none; }
 	margin-top: 1em;
 	margin-left: auto;
 	margin-right: auto;
-	width: 1000px;
+	width: 1015px;
 	background-color: #FFF;
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
@@ -41,12 +94,20 @@ a img { border: none; }
 }
 
 #sidebar {
-	width: 200px;
+	width: 150px;
 	position: absolute;
+} #sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	list-style-position: outside;
+} #sidebar ul li {
+} #sidebar ul li a {
+	text-decoration: none;
 }
 
 #content {
-	margin-left: 200px;
+	margin-left: 150px;
 }
 
 .blogrecord {
@@ -84,16 +145,7 @@ a img { border: none; }
 } .form_container .field select {
 	font-size: 1.2em;
 		font-family: arial,sans-serif;
-} .form_container .currency {
-		float: left
-} .form_container .price {
-		clear: none;
-		float: left
-} .form_container #id_price {
-		width: 80px;
-		text-align:right;
-}
-.item{clear:both;}
+} .item{clear:both;}
 .input_date{
 	width:6em;
 }
@@ -117,4 +169,31 @@ input[type=submit] {
 } .guestbook .entry .text {
 	border: 1px dotted black;
 	padding: 2px;
+}
+
+.album {
+	overflow: hidden;
+} .album .image-head {
+	overflow: hidden;
+} .album .image-head .image-title {
+	text-align:center;
+	font-size: 1.4em;
+} .album .image-head .next-image {
+	float: right;
+} .album .image-head .previous-image {
+	float: left;
+} .album .image-head .image-link {
+	font-size: 3em;
+} .album .image-head .image-link a {
+	text-decoration: none;
+} .album .thumb-image {
+	float: left;
+	padding: 2px;
+	border: 1px solid #CCC;
+	margin-right: 4px;
+} .album .full-image {
+	clear: both;
+	padding: 2px;
+	border: 1px solid #CCC;
+	display: inline-block;
 }

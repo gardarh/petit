@@ -3,14 +3,14 @@
 {% block content %}
 <div class="albums">
 	{% for album in albums %}
-	<div class="single-album">
-		<div class="display-image">
+	<div class="album">
+		<div class="thumb-image">
 			{% if album.display_image %}
-			<div class="display-image-image">
+			<div class="image">
 				<a href="{{ album.id }}/"><img src="{{ album.display_image.get_thumb_url }}" /></a>
 			</div>
 			{% endif %}
-			<div class="display-image-caption">
+			<div class="caption">
 				<a href="{{ album.id }}/">{{ album.title }}</a>
 			</div>
 		</div>
