@@ -4,6 +4,6 @@
 <h2>{{ page.heading }}</h2>
 {% endif %}
 <div class="pagetext">
-{{ page.content }}
+{{ page.content|safe|linebreaksbr }}
 </div>
 {% endblock %}

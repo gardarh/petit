@@ -123,7 +123,7 @@ class Blog(models.Model):
 class Guestbook(models.Model):
 	author = models.CharField(max_length=256)
 	date = models.DateTimeField(auto_now_add=True)
-	text = models.TextField()
+	text = models.TextField(_("Message"))
 	display = models.BooleanField(default=True)
 
 	def __unicode__(self):
@@ -214,7 +214,7 @@ class GalleryUpload(models.Model):
 						# if a "bad" file is found we just skip it.
 						continue
 					# TODO:detect img date taken via exif
-					img = Image(title='', text='',date=datetime.datetime.now())
+					img = Image(title='', text='',date_taken=datetime.datetime.now())
 					img.image.save(filename, ContentFile(data))
 					img.save()
 					self.album.images.add(img)

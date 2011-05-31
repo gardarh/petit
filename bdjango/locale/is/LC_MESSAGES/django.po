@@ -1,0 +1,590 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-31 23:02+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: petit/forms.py:11
+msgid "Password"
+msgstr "Aðgangsorð"
+
+#: petit/forms.py:14
+msgid "Title"
+msgstr "Titill"
+
+#: petit/models.py:126
+msgid "Message"
+msgstr "Skilaboð"
+
+#: petit/models.py:168 photologue/models.py:183
+msgid "images file (.zip)"
+msgstr "Myndaskrá (.zip)"
+
+#: petit/models.py:169 photologue/models.py:184
+msgid "Select a .zip file of images to upload into a new Gallery."
+msgstr ""
+
+#: petit/models.py:170
+msgid ""
+"Select a album to add these images to. Leave this empty to create a new "
+"album from the supplied title."
+msgstr ""
+
+#: petit/models.py:171 photologue/models.py:129 photologue/models.py:186
+#: photologue/models.py:485
+msgid "title"
+msgstr "titill"
+
+#: petit/models.py:171 photologue/models.py:186
+msgid ""
+"All photos in the gallery will be given a title made up of the gallery title "
+"+ a sequential number."
+msgstr ""
+
+#: petit/models.py:172 photologue/models.py:187 photologue/models.py:488
+msgid "caption"
+msgstr ""
+
+#: petit/models.py:172 photologue/models.py:187
+msgid "Caption will be added to all photos."
+msgstr ""
+
+#: petit/models.py:173 photologue/models.py:132 photologue/models.py:188
+#: photologue/models.py:534
+msgid "description"
+msgstr ""
+
+#: petit/models.py:173 photologue/models.py:188
+msgid "A description of this Gallery."
+msgstr ""
+
+#: petit/models.py:174 photologue/models.py:133 photologue/models.py:189
+#: photologue/models.py:490
+msgid "is public"
+msgstr ""
+
+#: petit/models.py:174 photologue/models.py:189
+msgid ""
+"Uncheck this to make the uploaded gallery and included photographs private."
+msgstr ""
+
+#: petit/models.py:178 photologue/models.py:193
+msgid "gallery upload"
+msgstr ""
+
+#: petit/models.py:179 photologue/models.py:194
+msgid "gallery uploads"
+msgstr ""
+
+#: petit/views.py:52
+msgid "Guestbook entry added"
+msgstr "Færslu bætt í gestaskrá"
+
+#: petit/views.py:86
+msgid "Comment added"
+msgstr "Athugasemd skráð"
+
+#: petit/views.py:95
+msgid "Title saved"
+msgstr "Titill vistaður"
+
+#: photologue/models.py:40
+msgid "Separate tags with spaces, put quotes around multiple-word tags."
+msgstr ""
+
+#: photologue/models.py:49
+msgid "Django-tagging was not found, tags will be treated as plain text."
+msgstr ""
+
+#: photologue/models.py:86
+msgid "Very Low"
+msgstr ""
+
+#: photologue/models.py:87
+msgid "Low"
+msgstr ""
+
+#: photologue/models.py:88
+msgid "Medium-Low"
+msgstr ""
+
+#: photologue/models.py:89
+msgid "Medium"
+msgstr ""
+
+#: photologue/models.py:90
+msgid "Medium-High"
+msgstr ""
+
+#: photologue/models.py:91
+msgid "High"
+msgstr ""
+
+#: photologue/models.py:92
+msgid "Very High"
+msgstr ""
+
+#: photologue/models.py:97
+msgid "Top"
+msgstr ""
+
+#: photologue/models.py:98
+msgid "Right"
+msgstr ""
+
+#: photologue/models.py:99
+msgid "Bottom"
+msgstr ""
+
+#: photologue/models.py:100
+msgid "Left"
+msgstr ""
+
+#: photologue/models.py:101
+msgid "Center (Default)"
+msgstr ""
+
+#: photologue/models.py:105
+msgid "Flip left to right"
+msgstr ""
+
+#: photologue/models.py:106
+msgid "Flip top to bottom"
+msgstr ""
+
+#: photologue/models.py:107
+msgid "Rotate 90 degrees counter-clockwise"
+msgstr ""
+
+#: photologue/models.py:108
+msgid "Rotate 90 degrees clockwise"
+msgstr ""
+
+#: photologue/models.py:109
+msgid "Rotate 180 degrees"
+msgstr ""
+
+#: photologue/models.py:113
+msgid "Tile"
+msgstr ""
+
+#: photologue/models.py:114
+msgid "Scale"
+msgstr ""
+
+#: photologue/models.py:124
+#, python-format
+msgid ""
+"Chain multiple filters using the following pattern \"FILTER_ONE->FILTER_TWO-"
+">FILTER_THREE\". Image filters will be applied in order. The following "
+"filters are available: %s."
+msgstr ""
+
+#: photologue/models.py:128
+msgid "date published"
+msgstr ""
+
+#: photologue/models.py:130
+msgid "title slug"
+msgstr ""
+
+#: photologue/models.py:131
+msgid "A \"slug\" is a unique URL-friendly title for an object."
+msgstr ""
+
+#: photologue/models.py:134
+msgid "Public galleries will be displayed in the default views."
+msgstr ""
+
+#: photologue/models.py:135 photologue/models.py:497
+msgid "photos"
+msgstr ""
+
+#: photologue/models.py:137 photologue/models.py:190 photologue/models.py:491
+msgid "tags"
+msgstr ""
+
+#: photologue/models.py:142
+msgid "gallery"
+msgstr ""
+
+#: photologue/models.py:143
+msgid "galleries"
+msgstr ""
+
+#: photologue/models.py:176
+msgid "count"
+msgstr ""
+
+#: photologue/models.py:185
+msgid ""
+"Select a gallery to add these images to. leave this empty to create a new "
+"gallery from the supplied title."
+msgstr ""
+
+#: photologue/models.py:258 photologue/models.py:645
+msgid "image"
+msgstr ""
+
+#: photologue/models.py:260
+msgid "date taken"
+msgstr ""
+
+#: photologue/models.py:262
+msgid "crop from"
+msgstr ""
+
+#: photologue/models.py:263
+msgid "effect"
+msgstr ""
+
+#: photologue/models.py:281
+msgid "An \"admin_thumbnail\" photo size has not been defined."
+msgstr ""
+
+#: photologue/models.py:289
+msgid "Thumbnail"
+msgstr ""
+
+#: photologue/models.py:486
+msgid "slug"
+msgstr ""
+
+#: photologue/models.py:489
+msgid "date added"
+msgstr ""
+
+#: photologue/models.py:490
+msgid "Public photographs will be displayed in the default views."
+msgstr ""
+
+#: photologue/models.py:496
+msgid "photo"
+msgstr ""
+
+#: photologue/models.py:533 photologue/models.py:659
+msgid "name"
+msgstr ""
+
+#: photologue/models.py:605
+msgid "rotate or flip"
+msgstr ""
+
+#: photologue/models.py:606 photologue/models.py:613
+msgid "color"
+msgstr ""
+
+#: photologue/models.py:606
+msgid ""
+"A factor of 0.0 gives a black and white image, a factor of 1.0 gives the "
+"original image."
+msgstr ""
+
+#: photologue/models.py:607
+msgid "brightness"
+msgstr ""
+
+#: photologue/models.py:607
+msgid ""
+"A factor of 0.0 gives a black image, a factor of 1.0 gives the original "
+"image."
+msgstr ""
+
+#: photologue/models.py:608
+msgid "contrast"
+msgstr ""
+
+#: photologue/models.py:608
+msgid ""
+"A factor of 0.0 gives a solid grey image, a factor of 1.0 gives the original "
+"image."
+msgstr ""
+
+#: photologue/models.py:609
+msgid "sharpness"
+msgstr ""
+
+#: photologue/models.py:609
+msgid ""
+"A factor of 0.0 gives a blurred image, a factor of 1.0 gives the original "
+"image."
+msgstr ""
+
+#: photologue/models.py:610
+msgid "filters"
+msgstr ""
+
+#: photologue/models.py:611
+msgid "size"
+msgstr ""
+
+#: photologue/models.py:611
+msgid ""
+"The height of the reflection as a percentage of the orignal image. A factor "
+"of 0.0 adds no reflection, a factor of 1.0 adds a reflection equal to the "
+"height of the orignal image."
+msgstr ""
+
+#: photologue/models.py:612
+msgid "strength"
+msgstr ""
+
+#: photologue/models.py:612
+msgid "The initial opacity of the reflection gradient."
+msgstr ""
+
+#: photologue/models.py:613
+msgid ""
+"The background color of the reflection gradient. Set this to match the "
+"background color of your page."
+msgstr ""
+
+#: photologue/models.py:616 photologue/models.py:667
+msgid "photo effect"
+msgstr ""
+
+#: photologue/models.py:617
+msgid "photo effects"
+msgstr ""
+
+#: photologue/models.py:646
+msgid "style"
+msgstr ""
+
+#: photologue/models.py:647
+msgid "opacity"
+msgstr ""
+
+#: photologue/models.py:647
+msgid "The opacity of the overlay."
+msgstr ""
+
+#: photologue/models.py:650
+msgid "watermark"
+msgstr ""
+
+#: photologue/models.py:651
+msgid "watermarks"
+msgstr ""
+
+#: photologue/models.py:659
+msgid ""
+"Photo size name should contain only letters, numbers and underscores. "
+"Examples: \"thumbnail\", \"display\", \"small\", \"main_page_widget\"."
+msgstr ""
+
+#: photologue/models.py:660
+msgid "width"
+msgstr ""
+
+#: photologue/models.py:660
+msgid ""
+"If width is set to \"0\" the image will be scaled to the supplied height."
+msgstr ""
+
+#: photologue/models.py:661
+msgid "height"
+msgstr ""
+
+#: photologue/models.py:661
+msgid ""
+"If height is set to \"0\" the image will be scaled to the supplied width"
+msgstr ""
+
+#: photologue/models.py:662
+msgid "quality"
+msgstr ""
+
+#: photologue/models.py:662
+msgid "JPEG image quality."
+msgstr ""
+
+#: photologue/models.py:663
+msgid "upscale images?"
+msgstr ""
+
+#: photologue/models.py:663
+msgid ""
+"If selected the image will be scaled up if necessary to fit the supplied "
+"dimensions. Cropped sizes will be upscaled regardless of this setting."
+msgstr ""
+
+#: photologue/models.py:664
+msgid "crop to fit?"
+msgstr ""
+
+#: photologue/models.py:664
+msgid ""
+"If selected the image will be scaled and cropped to fit the supplied "
+"dimensions."
+msgstr ""
+
+#: photologue/models.py:665
+msgid "pre-cache?"
+msgstr ""
+
+#: photologue/models.py:665
+msgid "If selected this photo size will be pre-cached as photos are added."
+msgstr ""
+
+#: photologue/models.py:666
+msgid "increment view count?"
+msgstr ""
+
+#: photologue/models.py:666
+msgid ""
+"If selected the image's \"view_count\" will be incremented when this photo "
+"size is displayed."
+msgstr ""
+
+#: photologue/models.py:668
+msgid "watermark image"
+msgstr ""
+
+#: photologue/models.py:672
+msgid "photo size"
+msgstr ""
+
+#: photologue/models.py:673
+msgid "photo sizes"
+msgstr ""
+
+#: templates/album_image.html:60
+msgid "Add comment"
+msgstr "Bæta við athugasemd"
+
+#: templates/base.html:26
+msgid "Frontpage"
+msgstr "Forsíða"
+
+#: templates/base.html:27 templates/blog.html:4
+msgid "Blog"
+msgstr "Blog"
+
+#: templates/base.html:28
+msgid "Albums"
+msgstr "Myndir"
+
+#: templates/base.html:29 templates/guestbook.html:3
+msgid "Guestbook"
+msgstr "Gestabók"
+
+#: templates/base.html:30
+msgid "Log out"
+msgstr "Skrá út"
+
+#: templates/guestbook.html:21 templates/guestbook_form.html:8
+msgid "Submit entry"
+msgstr "Senda færslu"
+
+#: templates/login.html:7
+msgid "Log in"
+msgstr "Skrá inn"
+
+#: templates/names/compare.html:4 templates/names/names.html:33
+msgid "Compare lists"
+msgstr ""
+
+#: templates/names/compare.html:7
+msgid "Go back to choosing names"
+msgstr ""
+
+#: templates/names/compare.html:10
+#, python-format
+msgid "Compare lists from %(p1)s and %(p2)s"
+msgstr ""
+
+#: templates/names/compare.html:15
+msgid "Common choices"
+msgstr ""
+
+#: templates/names/compare.html:26 templates/names/compare.html.py:37
+#, python-format
+msgid "%(person)s exclusive choices"
+msgstr ""
+
+#: templates/names/compare.html:50
+msgid "Compare"
+msgstr ""
+
+#: templates/names/namelist.html:4
+msgid "Your selected names"
+msgstr ""
+
+#: templates/names/namelist.html:8
+msgid "Approved names"
+msgstr ""
+
+#: templates/names/namelist.html:19
+msgid "Disapproved names"
+msgstr ""
+
+#: templates/names/names.html:4
+msgid "Namepicker"
+msgstr ""
+
+#: templates/names/names.html:15
+msgid "OK"
+msgstr ""
+
+#: templates/names/names.html:16
+msgid "Veto"
+msgstr ""
+
+#: templates/names/names.html:22
+msgid "No more names!"
+msgstr ""
+
+#: templates/names/names.html:27
+msgid "Last decision"
+msgstr ""
+
+#: templates/names/names.html:27
+msgid "Decline"
+msgstr ""
+
+#: templates/names/names.html:27
+msgid "Approve"
+msgstr ""
+
+#: templates/names/names.html:27
+msgid "Cancel"
+msgstr ""
+
+#: templates/names/names.html:29
+msgid "Remaining"
+msgstr ""
+
+#: templates/names/names.html:30
+msgid "OKed"
+msgstr ""
+
+#: templates/names/names.html:31
+msgid "VETOed"
+msgstr ""
+
+#: templates/names/names.html:32
+msgid "See names"
+msgstr ""
+
+#: templates/photologue/gallery_archive.html:19
+msgid "No galleries were found."
+msgstr ""
+
+#: templates/photologue/gallery_archive.html:22
+msgid "View all galleries"
+msgstr ""

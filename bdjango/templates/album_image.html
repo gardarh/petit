@@ -20,22 +20,11 @@
 		{% endif %}
 	</div>
 
-	<div class="full-image">
+	<div class="image-container">
 		<div class="image">
 			<img src="{{ image.get_img_url }}" />
 		</div>
-
-		{% if user.is_authenticated %}
-		<div class="caption-edit">
-			<form method="POST" action=".">
-				{% csrf_token %}
-				{% include "base_form.html" with form=titleform %}
-				<input type="submit" value="{% trans 'Submit new title' %}" name="submit_title" />
-			</form>
-		</div>
-		{% endif %}
-
-		<div class="date_taken">
+		<div class="date-taken">
 			{{ image.date_taken|date:"j F, H:i:s" }}
 		</div>
 		{% if image.text %}
@@ -45,23 +34,33 @@
 		{% endif %}
 	</div>
 
+	{% if user.is_authenticated %}
+	<div class="caption-edit">
+		<form method="POST" action=".">
+			{% csrf_token %}
+			{% include "base_form.html" with form=titleform include_submit=1 submit_name="submit_title" submit_value="Save title" %}
+		</form>
+	</div>
+	{% endif %}
+
 	<div class="image-comments">
 		{% for comment in image.imagecomment_set.all %}
 		<div class="image-comment">
 			<div class="name">{{ comment.name }}</div>
 			<div class="date">{{ comment.date|date:"j F, H:i" }}</div>
-			<div class="comment">{{ comment.comment }}</div>
+			<div class="comment">{{ comment.comment|linebreaksbr }}</div>
 		</div>
 		{% endfor %}
-
-		<div class="comment-form">
-			<form method="POST" action=".">
-				{% csrf_token %}
-				{% include "base_form.html" with form=comment_form %}
-				<input type="submit" name="submit_comment" value="{% trans 'Add comment' %}" />
-			</form>
-		</div>
 	</div>
+
+	<div class="comment-form">
+		<form method="POST" action=".">
+			{% csrf_token %}
+			{% include "base_form.html" with form=comment_form %}
+			<input type="submit" name="submit_comment" value="{% trans 'Add comment' %}" />
+		</form>
+	</div>
+
 </div>
 {% endblock %}
 

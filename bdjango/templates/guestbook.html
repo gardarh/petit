@@ -13,8 +13,13 @@
 		</div>
 	</div>
 	{% endfor %}
-	<div>
-		<a href="/guestbook/add/">{% trans "Add entry" %}</a>
+
+	<div class="guestbook-form">
+		<form method="POST" action=".">
+			{% csrf_token %}
+			{% include "base_form.html" with form=guestbook_form %}
+		<input type="submit" name="submit" value="{% trans 'Submit entry' %}" />
+		</form>
 	</div>
 </div>
 {% endblock %}

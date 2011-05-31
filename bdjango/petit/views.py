@@ -42,11 +42,6 @@ def blog(request):
 
 @password_protect
 def guestbook(request):
-	context = { 'entries': Guestbook.objects.filter(display=True).order_by('date')[0:20] }
-	return HttpResponse(loader.get_template("guestbook.html").render(RequestContext(request,context)))
-
-@password_protect
-def guestbook_form(request):
 	instance = Guestbook(display=True)
 	guestbook_form = GuestbookForm(instance=instance)
 
@@ -54,12 +49,14 @@ def guestbook_form(request):
 		guestbook_form = GuestbookForm(request.POST, instance=instance)
 		if guestbook_form.is_valid():
 			guestbook_form.save()
+			messages.success(request, _("Guestbook entry added"))
 			return HttpResponseRedirect('/guestbook/')
 
 	context = {
 			'guestbook_form': guestbook_form
+			, 'entries': Guestbook.objects.filter(display=True).order_by('date')[0:20]
 			}
-	return HttpResponse(loader.get_template("guestbook_form.html").render(RequestContext(request,context)))
+	return HttpResponse(loader.get_template("guestbook.html").render(RequestContext(request,context)))
 
 @password_protect
 def images(request, image_id):

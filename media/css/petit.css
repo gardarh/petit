@@ -91,6 +91,8 @@ ul.errorlist li {
 	border-radius: 20px;
 	padding: 10px;
 	min-height: 150px;
+	overflow: hidden;
+	min-height: 400px;
 }
 
 #sidebar {
@@ -102,6 +104,8 @@ ul.errorlist li {
 	list-style: none;
 	list-style-position: outside;
 } #sidebar ul li {
+	font-size: 1.2em;
+	margin-bottom: 6px;
 } #sidebar ul li a {
 	text-decoration: none;
 }
@@ -171,6 +175,13 @@ input[type=submit] {
 	padding: 2px;
 }
 
+.guestbook-form {
+	margin-bottom: 24px;
+} .guestbook-form .text textarea {
+	width: 500px;
+	height: 100px;
+}
+
 .album {
 	overflow: hidden;
 } .album .image-head {
@@ -191,17 +202,21 @@ input[type=submit] {
 	padding: 2px;
 	border: 1px solid #CCC;
 	margin-right: 4px;
-} .album .full-image {
+} .album .image-container {
+	text-align:center;
+	margin-bottom: 24px;
+} .album .image-container .image {
 	clear: both;
 	padding: 2px;
 	border: 1px solid #CCC;
 	display: inline-block;
-	margin-bottom: 24px;
+	margin-bottom: 12px;
+} .album .image-container .date-taken {
 } .album .image-comments {
 } .album .image-comments .image-comment .name {
 	float: left;
 	display: inline;
-	font-size: 0.9em;
+	font-size: 1.2em;
 } .album .image-comments .image-comment .date {
 	color: #999;
 	font-size: 0.9em;
@@ -211,8 +226,38 @@ input[type=submit] {
 	margin-left: 20px;
 } .album .image-comments .image-comment .comment {
 	clear: both;
+	padding: 3px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	border: 1px dotted #BBB;
-	font-size: 1.2em;
 }
+
+.album .caption-edit {
+	overflow: hidden;
+	border: 1px solid black;
+	margin-bottom: 24px;
+} .album .caption-edit .form_container {
+	margin: 0px;
+} .album .caption-edit .item {
+	float: left;
+	clear: none;
+} .album .caption-edit .submit label {
+	visibility: hidden;
+}
+
+.album .comment-form {
+	margin-bottom: 24px;
+} .album .comment-form .comment textarea {
+	width: 500px;
+	height: 100px;
+}
+
+.icon {
+    padding-left:20px;
+    background: url(/img/icons/add.png) no-repeat center left;
+}
+.edit{background-image: url(/img/icons/pencil.png);}
+.ok{background-image: url(/img/icons/tick.png);}
+.notok{background-image: url(/img/icons/cross.png);}
+.add{background-image: url(/img/icons/add.png);}
+.delete{background-image: url(/img/icons/trash.png);}

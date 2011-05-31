@@ -3,4 +3,12 @@
 	{%for field in form %}
 		{% include "base_formfield.html" %}
 	{%endfor%}
+	{% if include_submit %}
+		<div class="item submit">
+			<label>Submit</label>
+			<div class="field">
+				<input type="submit" name="{% if submit_name %}{{submit_name}}{% else %}submit{% endif %}" value="{% if submit_value %}{{submit_value}}{% else %}Submit{% endif %}" />
+			</div>
+		</div>
+	{% endif %}
 </div>

@@ -3,3 +3,4 @@
 media/uploaded/*
 media/gallery/*
 bdjango/localsettings.py
+bdjango/locale/*/LC_MESSAGES/*.mo
