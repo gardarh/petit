@@ -9,6 +9,17 @@ import zipfile, os, datetime
 from cStringIO import StringIO
 from utils import EXIF
 
+ORIENTATIONS = {
+	1:0
+	, 2:0
+	, 3:180
+	, 4:0
+	, 5:90
+	, 6:270
+	, 7:270
+	, 8:90
+}
+
 class Image(models.Model):
 	title = models.CharField(max_length=256,null=True,blank=True)
 	image = models.ImageField(upload_to='uploaded')
@@ -17,7 +28,13 @@ class Image(models.Model):
 
 	def generate_images(self):
 		#print type(self.image),dir(self.image)
+		key = self.EXIF.get('Image Orientation', None).values[0]
+		print key,type(key)
+		print ORIENTATIONS,key,type(key)
+		rotation = ORIENTATIONS.get(key,0)
 		im = PyImage.open(self.image.path)
+		if rotation != 0:
+			im = im.rotate(rotation)
 		# im.format gives image format
 		width, height = im.size
 		ratio = float(width)/float(height)
@@ -59,20 +76,23 @@ class Image(models.Model):
 	def EXIF(self):
 		try:
 			return EXIF.process_file(open(self.image.path, 'rb'))
-		except:
+		except Exception, e:
+			print "EXIF EXP 1",str(e)
 			try:
 				return EXIF.process_file(open(self.image.path, 'rb'), details=False)
-			except:
+			except Exception, ee:
+				print "EXIF EXP 2",str(ee)
 				return {}
 
 	def save(self, *args, **kwargs):
 		generate_images = kwargs.pop('generate_images',True)
-		if not self.date_taken:
+		clean_dict = {}
+		if not self.date_taken or True:
 			exif_date = self.EXIF.get('EXIF DateTimeOriginal', None)
 			if exif_date:
 				self.date_taken = datetime.datetime.strptime(exif_date.values,'%Y:%m:%d %H:%M:%S')
 			else:
-				self.date_taken = datetime.now()
+				self.date_taken = datetime.datetime.now()
 		super(Image, self).save(*args, **kwargs)
 		# Post-save hook: Create album image and thumbnail - original is stored as django wants to
 		if generate_images:
@@ -194,7 +214,6 @@ class GalleryUpload(models.Model):
 						trial_image.verify()
 					except Exception, e:
 						# if a "bad" file is found we just skip it.
-						print "EXCEPTION"
 						continue
 					# TODO:detect img date taken via exif
 					img = Image(title='', text='',date=datetime.datetime.now())

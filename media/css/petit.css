@@ -196,4 +196,23 @@ input[type=submit] {
 	padding: 2px;
 	border: 1px solid #CCC;
 	display: inline-block;
+	margin-bottom: 24px;
+} .album .image-comments {
+} .album .image-comments .image-comment .name {
+	float: left;
+	display: inline;
+	font-size: 0.9em;
+} .album .image-comments .image-comment .date {
+	color: #999;
+	font-size: 0.9em;
+	line-height: 1em;
+	display: inline;
+	float: left;
+	margin-left: 20px;
+} .album .image-comments .image-comment .comment {
+	clear: both;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px dotted #BBB;
+	font-size: 1.2em;
 }

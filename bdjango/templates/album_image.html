@@ -3,14 +3,14 @@
 {% block content %}
 <div class="album">
 	<div class="image-head">
-		{% if next_image %}
+		{% if previous_image %}
 		<div class="previous-image image-link">
-			<a href="/albums/{{ album.id }}/{{ next_image.id }}/">&lt;</a>
+			<a href="/albums/{{ album.id }}/{{ previous_image.id }}/">&lt;</a>
 		</div>
 		{% endif %}
-		{% if previous_image %}
+		{% if next_image %}
 		<div class="next-image image-link">
-			<a href="/albums/{{ album.id }}/{{ previous_image.id }}/">&gt;</a>
+			<a href="/albums/{{ album.id }}/{{ next_image.id }}/">&gt;</a>
 		</div>
 		{% endif %}
 		{% if image.title%}
@@ -35,6 +35,9 @@
 		</div>
 		{% endif %}
 
+		<div class="date_taken">
+			{{ image.date_taken|date:"j F, H:i:s" }}
+		</div>
 		{% if image.text %}
 		<div class="caption">
 			{{ image.text }}
