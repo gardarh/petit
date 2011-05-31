@@ -27,14 +27,12 @@ class Image(models.Model):
 	date_taken = models.DateTimeField(null=True,blank=True)
 
 	def generate_images(self):
-		#print type(self.image),dir(self.image)
-		key = self.EXIF.get('Image Orientation', None).values[0]
-		print key,type(key)
-		print ORIENTATIONS,key,type(key)
-		rotation = ORIENTATIONS.get(key,0)
+		orientation_key = self.EXIF.get('Image Orientation', None)
 		im = PyImage.open(self.image.path)
-		if rotation != 0:
-			im = im.rotate(rotation)
+		if orientation_key:
+			rotation = ORIENTATIONS.get(orientation_key.values[0],0)
+			if rotation != 0:
+				im = im.rotate(rotation)
 		# im.format gives image format
 		width, height = im.size
 		ratio = float(width)/float(height)
