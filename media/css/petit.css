@@ -4,7 +4,8 @@ html, body, div, span, h1, h2, h3, h4, form, label{
   padding: 0;
 }
 body {
-  font-size: 11pt;
+  font-size: 12pt;
+  line-height: 1.8em;
   color: #222;
   background: #D60F41;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;

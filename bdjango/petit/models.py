@@ -48,8 +48,8 @@ class Image(models.Model):
 			if height > settings.GALLERY_IMG_MAX_DIMENSION:
 				img_dimensions = [int(settings.GALLERY_IMG_MAX_DIMENSION*ratio), settings.GALLERY_IMG_MAX_DIMENSION]
 
-		im.resize(img_dimensions, PyImage.ANTIALIAS).save(self.get_img_path('img'))
-		im.resize(thumb_dimensions, PyImage.ANTIALIAS).save(self.get_img_path('thumb'))
+		im.resize(img_dimensions, PyImage.ANTIALIAS).convert("RGB").save(self.get_img_path('img'),"JPEG",quality=90)
+		im.resize(thumb_dimensions, PyImage.ANTIALIAS).convert("RGB").save(self.get_img_path('thumb'),"JPEG",quality=90)
 
 	def get_img_url(self):
 		return '/%s/%s' % (settings.GALLERY_DIR, self.get_img_location('img'))
