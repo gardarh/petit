@@ -473,7 +473,11 @@ msgstr "Forsíða"
 
 #: templates/base.html:27 templates/blog.html:4
 msgid "Blog"
-msgstr "Blog"
+msgstr "Blogg"
+
+#: templates/base.html:27 templates/blog.html:4
+msgid "Diary"
+msgstr "Dagbók"
 
 #: templates/base.html:28
 msgid "Albums"

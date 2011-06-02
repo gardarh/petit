@@ -4,14 +4,21 @@
 <div class="albums">
 	{% for album in albums %}
 	<div class="album">
-		<div class="thumb-image">
-			{% if album.display_image %}
-			<div class="image">
-				<a href="{{ album.id }}/"><img src="{{ album.display_image.get_thumb_url }}" /></a>
+		<div class="thumb-container">
+			<div class="thumb-image">
+				{% if album.display_image %}
+				<div class="image">
+					<a href="{{ album.id }}/"><img src="{{ album.display_image.get_thumb_url }}" /></a>
+				</div>
+				{% endif %}
 			</div>
-			{% endif %}
-			<div class="caption">
+		</div>
+		<div class="caption">
+			<div class="link">
 				<a href="{{ album.id }}/">{{ album.title }}</a>
+			</div>
+			<div class="date_taken">
+				{{ album.date_range.0|date:"j F Y" }} - {{ album.date_range.0|date:"j F Y" }}
 			</div>
 		</div>
 	</div>

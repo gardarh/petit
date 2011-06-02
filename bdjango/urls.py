@@ -21,7 +21,7 @@ urlpatterns += patterns('petit.views',
     (r'^logout/$', 'logout'),
 
 	(r'^$', 'page', {'slug':'forsida', 'hide_heading': True}),
-    (r'^blog/$', 'blog'),
+    (r'^diary/$', 'diary'),
     (r'^guestbook/$', 'guestbook'),
     (r'^images/(\d+)/$', 'images'),
     (r'^albums/$', 'albums'),

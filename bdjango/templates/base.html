@@ -3,6 +3,7 @@
 
 {% block frame_head %}
 	<link rel="stylesheet" type="text/css" href="/css/petit.css" />
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Indie+Flower|Kreon|Swanky+and+Moo+Moo">
 	<script type="text/javascript" src="/js/jquery-1.6.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
@@ -20,11 +21,12 @@
 	<div id="headerblock">
 		<h1>{{ site_title }}</h1>
 	</div>
+	<div id="header_shadow"></div>
 	<div id="sidebar">
 		{% if not hide_sidebar %}
 		<ul>
 			<li><a href="/">{% trans "Frontpage" %}</a></li>
-			<li><a href="/blog/">{% trans "Blog" %}</a></li>
+			<li><a href="/diary/">{% trans "Diary" %}</a></li>
 			<li><a href="/albums/">{% trans "Albums" %}</a></li>
 			<li><a href="/guestbook/">{% trans "Guestbook" %}</a></li>
 			<li><a href="/logout/">{% trans "Log out" %}</a></li>

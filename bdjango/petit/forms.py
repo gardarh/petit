@@ -10,18 +10,23 @@ class GuestbookForm(forms.ModelForm):
 class PasswordForm(forms.Form):
 	password = forms.CharField(_("Password"), widget=forms.widgets.PasswordInput)
 
-class ImageTitleForm(forms.Form):
+class ImageSettingsForm(forms.Form):
 	title = forms.CharField(_("Title"),required=False)
+	use_on_album_overview = forms.BooleanField(required=False)
 
 	def __init__(self, *args, **kwargs):
-		self.instance = kwargs.pop('instance')
-		super(ImageTitleForm, self).__init__(*args, **kwargs)
-		self.fields['title'].initial = self.instance.title
-
+		self.image = kwargs.pop('image')
+		self.album = kwargs.pop('album')
+		super(ImageSettingsForm, self).__init__(*args, **kwargs)
+		self.fields['title'].initial = self.image.title
+		self.fields['use_on_album_overview'].initial = True if self.album.display_image == self.image else False
 
 	def save(self):
-		self.instance.title = self.cleaned_data['title']
-		self.instance.save(generate_images=False)
+		self.image.title = self.cleaned_data['title']
+		if self.cleaned_data['use_on_album_overview']:
+			self.album.display_image = self.image
+			self.album.save()
+		self.image.save(generate_images=False)
 
 class ImageCommentForm(forms.ModelForm):
 	class Meta:

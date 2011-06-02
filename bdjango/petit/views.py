@@ -5,7 +5,7 @@ from django.template import RequestContext, loader
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from models import Blog, Guestbook, Image, Album, Page, ImageComment
-from forms import GuestbookForm, PasswordForm, ImageTitleForm, ImageCommentForm
+from forms import GuestbookForm, PasswordForm, ImageSettingsForm, ImageCommentForm
 from decorators import password_protect
 import settings
 
@@ -35,7 +35,7 @@ def page(request,slug,hide_heading=False):
 	return HttpResponse(loader.get_template("page.html").render(RequestContext(request,context)))
 
 @password_protect
-def blog(request):
+def diary(request):
 	context = { 'blogs': Blog.objects.filter(display=True).order_by('date') }
 	return HttpResponse(loader.get_template("blog.html").render(RequestContext(request,context)))
 
@@ -89,8 +89,8 @@ def album_image(request,album_id,image_id):
 		return response
 
 	if request.user.is_authenticated():
-		titleform = ImageTitleForm(instance=image, data=request.POST if request.method == "POST" and 'submit_title' in request.POST else None)
-		if request.method == "POST" and titleform.is_valid() and 'submit_title' in request.POST:
+		titleform = ImageSettingsForm(image=image, album=album, data=request.POST if request.method == "POST" and 'submit_settings' in request.POST else None)
+		if request.method == "POST" and titleform.is_valid() and 'submit_settings' in request.POST:
 			titleform.save()
 			messages.success(request, _("Title saved"))
 			return HttpResponseRedirect('/albums/%d/%d' % (album.id, image.id))

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
-<div class="album">
+<div class="single-image">
 	<div class="image-head">
 		{% if previous_image %}
 		<div class="previous-image image-link">
@@ -25,7 +25,7 @@
 			<img src="{{ image.get_img_url }}" />
 		</div>
 		<div class="date-taken">
-			{{ image.date_taken|date:"j F, H:i:s" }}
+			{{ image.date_taken|date:"j F Y, H:i" }}
 		</div>
 		{% if image.text %}
 		<div class="caption">
@@ -38,14 +38,14 @@
 	<div class="caption-edit">
 		<form method="POST" action=".">
 			{% csrf_token %}
-			{% include "base_form.html" with form=titleform include_submit=1 submit_name="submit_title" submit_value="Save title" %}
+			{% include "base_form.html" with form=titleform include_submit=1 submit_name="submit_settings" submit_value="Save settings" %}
 		</form>
 	</div>
 	{% endif %}
 
-	<div class="image-comments">
+	<div class="user-comments">
 		{% for comment in image.imagecomment_set.all %}
-		<div class="image-comment">
+		<div class="user-comment">
 			<div class="name">{{ comment.name }}</div>
 			<div class="date">{{ comment.date|date:"j F, H:i" }}</div>
 			<div class="comment">{{ comment.comment|linebreaksbr }}</div>

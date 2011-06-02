@@ -3,16 +3,15 @@
 {% block page_header %}{% trans "Guestbook" %}{% endblock %}
 {% block content %}
 <div class="guestbook">
-	{% for entry in entries %}
-	<div class="entry">
-		<div class="author">
-			{{ entry.author }} | {{ entry.date|date:"j F Y" }}
+	<div class="user-comments">
+		{% for entry in entries %}
+		<div class="user-comment">
+			<div class="name">{{ entry.author }}</div>
+			<div class="date">{{ entry.date|date:"j F, H:i" }}</div>
+			<div class="comment">{{ entry.text }}</div>
 		</div>
-		<div class="text">
-			{{ entry.text }}
-		</div>
+		{% endfor %}
 	</div>
-	{% endfor %}
 
 	<div class="guestbook-form">
 		<form method="POST" action=".">

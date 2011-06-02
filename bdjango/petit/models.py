@@ -141,7 +141,7 @@ class Album(models.Model):
 	display_image = models.ForeignKey(Image,related_name='display_image',null=True,blank=True)
 
 	class Meta:
-		ordering = ['date']
+		ordering = ['date','id']
 
 	def next_image(self, image):
 		img_ids = [img.id for img in self.images.all()]
@@ -155,6 +155,9 @@ class Album(models.Model):
 
 	def __unicode__(self):
 		return '%s (%s)' % (self.title, self.date)
+
+	def date_range(self):
+		return (self.images.all()[0].date_taken, self.images.latest('date_taken').date_taken) if self.images.count() > 0 else None
 
 class Page(models.Model):
 	heading = models.CharField(max_length=64)
