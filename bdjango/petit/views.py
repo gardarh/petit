@@ -41,7 +41,7 @@ def diary(request):
 
 @password_protect
 def guestbook(request):
-	instance = Guestbook(display=True,ip=request.META['REMOTE_ADDR'])
+	instance = Guestbook(display=True,ip=request.META.get('HTTP_X_REAL_IP',request.META['REMOTE_ADDR']))
 	guestbook_form = GuestbookForm(instance=instance)
 
 	if request.method == "POST":
@@ -78,7 +78,7 @@ def album_image(request,album_id,image_id):
 	album = Album.objects.get(id=int(album_id))
 	image = Image.objects.get(id=int(image_id), album=album)
 	titleform = None
-	comment_instance = ImageComment(image=image,ip=request.META['REMOTE_ADDR'],name=request.COOKIES.get('comment_name',None))
+	comment_instance = ImageComment(image=image,ip=request.META.get('HTTP_X_REAL_IP',request.META['REMOTE_ADDR']),name=request.COOKIES.get('comment_name',None))
 	comment_form = ImageCommentForm(instance=comment_instance, data=request.POST if request.method == "POST" and 'submit_comment' in request.POST else None)
 	if request.method == "POST" and 'submit_comment' in request.POST and comment_form.is_valid():
 		comment_form.save()

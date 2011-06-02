@@ -92,7 +92,7 @@ msgstr ""
 
 #: petit/views.py:52
 msgid "Guestbook entry added"
-msgstr "Færslu bætt í gestaskrá"
+msgstr "Færslu bætt í gestabók"
 
 #: petit/views.py:86
 msgid "Comment added"
