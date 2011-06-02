@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-{% if not hide_heading %}
+{% if page.heading %}
 <h2>{{ page.heading }}</h2>
 {% endif %}
 <div class="pagetext">

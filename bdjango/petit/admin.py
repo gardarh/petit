@@ -3,6 +3,8 @@ from bdjango.petit.models import Blog, Image, Album, Guestbook, Page, GalleryUpl
 
 class PageAdmin(admin.ModelAdmin):
 	prepopulated_fields = {"slug":('heading',)}
+	list_display = ('slug','heading','display_link')
+	search_fields = ('slug','heading','content')
 
 class AlbumAdmin(admin.ModelAdmin):
 	list_display = ('id','title','text','date','num_images')

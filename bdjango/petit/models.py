@@ -164,8 +164,9 @@ class Album(models.Model):
 		return self.images.count()
 
 class Page(models.Model):
-	heading = models.CharField(max_length=64)
+	heading = models.CharField(max_length=64,blank=True)
 	slug = models.SlugField(max_length=64,primary_key=True)
+	display_link = models.BooleanField()
 	content = models.TextField(blank=True)
 
 	def __unicode__(self):

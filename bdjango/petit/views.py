@@ -30,8 +30,8 @@ def logout(request):
 	return response
 
 @password_protect
-def page(request,slug,hide_heading=False):
-	context = {'page': Page.objects.get(slug=slug), 'hide_heading': hide_heading}
+def page(request,slug):
+	context = {'page': Page.objects.get(slug=slug)}
 	return HttpResponse(loader.get_template("page.html").render(RequestContext(request,context)))
 
 @password_protect
