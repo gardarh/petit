@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 class GuestbookForm(forms.ModelForm):
 	class Meta:
 		model = Guestbook
-		exclude = ['date','display']
+		exclude = ['date','display','ip']
 
 class PasswordForm(forms.Form):
 	password = forms.CharField(_("Password"), widget=forms.widgets.PasswordInput)

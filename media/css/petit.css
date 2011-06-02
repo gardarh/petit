@@ -117,6 +117,9 @@ ul.errorlist li {
 	padding-top: 30px;
 	font-family: 'Indie Flower', arial, serif;
 	font-size: 3em;
+} #headerblock h1 a {
+	text-decoration: None;
+	color: #000;
 } 
 #header_shadow {
 	background-color: #522;

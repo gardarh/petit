@@ -125,6 +125,7 @@ class Guestbook(models.Model):
 	date = models.DateTimeField(auto_now_add=True)
 	text = models.TextField(_("Message"))
 	display = models.BooleanField(default=True)
+	ip = models.IPAddressField()
 
 	def __unicode__(self):
 		return '%s (%s)' % (self.author,self.date)
@@ -158,6 +159,9 @@ class Album(models.Model):
 
 	def date_range(self):
 		return (self.images.all()[0].date_taken, self.images.latest('date_taken').date_taken) if self.images.count() > 0 else None
+
+	def num_images(self):
+		return self.images.count()
 
 class Page(models.Model):
 	heading = models.CharField(max_length=64)

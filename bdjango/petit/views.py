@@ -39,16 +39,15 @@ def diary(request):
 	context = { 'blogs': Blog.objects.filter(display=True).order_by('date') }
 	return HttpResponse(loader.get_template("blog.html").render(RequestContext(request,context)))
 
-
 @password_protect
 def guestbook(request):
-	instance = Guestbook(display=True)
+	instance = Guestbook(display=True,ip=request.META['REMOTE_ADDR'])
 	guestbook_form = GuestbookForm(instance=instance)
 
 	if request.method == "POST":
 		guestbook_form = GuestbookForm(request.POST, instance=instance)
 		if guestbook_form.is_valid():
-			guestbook_form.save()
+			guestbook_form.save(request)
 			messages.success(request, _("Guestbook entry added"))
 			return HttpResponseRedirect('/guestbook/')
 
