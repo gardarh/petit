@@ -7,7 +7,7 @@ body {
   font-size: 12pt;
   line-height: 1.8em;
   color: #222;
-  background: #D60F41;
+  background: #BCFB30;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
@@ -16,7 +16,6 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
 h1 {
 	font-size: 1.7em; 
 	line-height: 1; 
-	font-weight:bold;
 	text-align:center;
 	margin-bottom: 0.5em;
 }
@@ -35,9 +34,9 @@ td, th {
 
 a img { border: none; }
 a {
-	color: #800;
+	color: #5F275A;
 } a:hover {
-	color: #C44;
+	color: #AA7FA6;
 }
 
 li ul {
@@ -112,17 +111,17 @@ ul.errorlist li {
 
 #headerblock {
 	height: 100px;
-	background-color: #F9E0E0;
+	background-color: #5F275A;
 } #headerblock h1 {
 	padding-top: 30px;
 	font-family: 'Indie Flower', arial, serif;
-	font-size: 3em;
+	font-size: 3.5em;
 } #headerblock h1 a {
 	text-decoration: None;
-	color: #000;
+	color: #AA7FA6;
 } 
 #header_shadow {
-	background-color: #522;
+	background-color: #8A5085;
 	height: 10px;
 }
 
