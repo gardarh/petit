@@ -36,7 +36,7 @@ def page(request,slug):
 
 @password_protect
 def diary(request):
-	context = { 'blogs': Blog.objects.filter(display=True).order_by('date') }
+	context = { 'blogs': Blog.objects.filter(display=True).order_by('-date') }
 	return HttpResponse(loader.get_template("blog.html").render(RequestContext(request,context)))
 
 @password_protect

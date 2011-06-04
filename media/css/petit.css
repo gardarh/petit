@@ -21,6 +21,8 @@ h1 {
 }
 h2 {
 	font-size: 1.5em;
+	text-align: center;
+	margin-bottom: 12px;
 }
 h3 {
 	font-size: 1.5em;
@@ -143,9 +145,10 @@ ul.errorlist li {
 	font-size: 1.2em;
 	display: inline-block;
 } .blogrecord .author {
-	font-size: 0.7em;
-	color: #AAA;
+	font-size: 0.8em;
+	color: #888;
 	display: inline-block;
+	margin-left: 12px;
 } .blogrecord .text {
 	clear:both;
 }
@@ -208,10 +211,6 @@ input[type=submit] {
 	overflow: hidden;
 } .single-image .image-head {
 	overflow: hidden;
-} .single-image .image-head .image-title {
-	text-align:center;
-	font-size: 1.4em;
-	margin-bottom: 10px;
 } .single-image .image-head .next-image {
 	float: right;
 } .single-image .image-head .previous-image {
@@ -219,6 +218,11 @@ input[type=submit] {
 } .single-image .image-head .image-link {
 	font-size: 3em;
 } .single-image .image-head .image-link a {
+	text-decoration: none;
+} .single-image .image-head .image-album {
+	text-align: center;
+	font-size: 0.9;
+} .single-image .image-head .image-album a {
 	text-decoration: none;
 } .single-image .image-container {
 	text-align:center;

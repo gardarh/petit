@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% block page_heading %}{{ image.title }}{% endblock %}
 {% block content %}
 <div class="single-image">
 	<div class="image-head">
@@ -13,11 +14,9 @@
 			<a href="/albums/{{ album.id }}/{{ next_image.id }}/">&gt;</a>
 		</div>
 		{% endif %}
-		{% if image.title%}
-		<div class="image-title">
-			{{ image.title}}
+		<div class="image-album">
+			{% trans "Album" %}: <a href="/albums/{{ album.id }}/">{{ album.title }}</a>
 		</div>
-		{% endif %}
 	</div>
 
 	<div class="image-container">

@@ -108,7 +108,7 @@ class ImageComment(models.Model):
 
 class Blog(models.Model):
 	author = models.ForeignKey(User)
-	date = models.DateTimeField(auto_now_add=True)
+	date = models.DateTimeField()
 	title = models.CharField(max_length=256)
 	text = models.TextField()
 	display = models.BooleanField(default=True)
