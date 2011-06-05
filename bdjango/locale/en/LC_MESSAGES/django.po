@@ -1,150 +1,147 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR Gardar Hauksson, 2011
-# FULL NAME <gardarh at gmail.com>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-06-05 19:16+0000\n"
-"PO-Revision-Date: 2011-06-05 17:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: petit/forms.py:11
 msgid "Password"
-msgstr "Aðgangsorð"
+msgstr ""
 
 #: petit/forms.py:14
 msgid "Title"
-msgstr "Titill"
+msgstr ""
 
 #: petit/models.py:24 petit/models.py:134
 msgid "Name"
-msgstr "Nafn"
+msgstr ""
 
 #: petit/models.py:25
 msgid "Comment"
-msgstr "Athugasemd"
+msgstr ""
 
 #: petit/models.py:26 petit/models.py:135
 msgid "Date"
-msgstr "Dags"
+msgstr ""
 
 #: petit/models.py:27 petit/models.py:138
 msgid "IP Address"
-msgstr "IP tala"
+msgstr ""
 
 #: petit/models.py:136
 msgid "Message"
-msgstr "Skilaboð"
+msgstr ""
 
 #: petit/models.py:137
 msgid "Display"
-msgstr "Birta"
+msgstr ""
 
 #: petit/models.py:193
 msgid "images file (.zip)"
-msgstr "Myndaskrá (.zip)"
+msgstr ""
 
 #: petit/models.py:194
 msgid "Select a .zip file of images to upload into a new Gallery."
-msgstr "Veldu .zip skrá með myndum til að hlaða í nýtt albúm"
+msgstr ""
 
 #: petit/models.py:195
 msgid ""
 "Select a album to add these images to. Leave this empty to create a new "
 "album from the supplied title."
 msgstr ""
-"Veldu album til að bæta þessum myndum í. Ef þessi reitur er auður er nýtt "
-"albúm búið til með titlinum sem gefinn var."
 
 #: petit/models.py:196
 msgid "title"
-msgstr "titill"
+msgstr ""
 
 #: petit/models.py:196
 msgid "If no album is provided above you must enter a title."
-msgstr "Ef ekkert albúm er valið verður þú að slá inn titil"
+msgstr ""
 
 #: petit/models.py:199
 msgid "gallery upload"
-msgstr "albúm innsetning"
+msgstr ""
 
 #: petit/models.py:200
 msgid "gallery uploads"
-msgstr "albúm innsetningar"
+msgstr ""
 
 #: petit/views.py:44 petit/views.py:84 petit/views.py:115
 msgid "Comment added"
-msgstr "Athugasemd skráð"
+msgstr ""
 
 #: petit/views.py:63
 msgid "Guestbook entry added"
-msgstr "Færslu bætt í gestabók"
+msgstr ""
 
 #: petit/views.py:124
 msgid "Title saved"
-msgstr "Titill vistaður"
+msgstr ""
 
 #: templates/album_image.html:18
 msgid "Album"
-msgstr "Albúm"
+msgstr ""
 
 #: templates/albums.html:3 templates/base.html:30
 msgid "Albums"
-msgstr "Myndir"
+msgstr ""
 
 #: templates/base.html:28
 msgid "Frontpage"
-msgstr "Forsíða"
+msgstr ""
 
 #: templates/base.html:29 templates/blog.html:5
 msgid "Diary"
-msgstr "Dagbók"
+msgstr ""
 
 #: templates/base.html:31 templates/videos.html:4
 msgid "Videos"
-msgstr "Myndbönd"
+msgstr ""
 
 #: templates/base.html:32 templates/guestbook.html:3
 msgid "Guestbook"
-msgstr "Gestabók"
+msgstr ""
 
 #: templates/base.html:36
 msgid "Log out"
-msgstr "Skrá út"
+msgstr ""
 
 #: templates/base_form.html:11
 msgid "Submit"
-msgstr "Senda"
+msgstr ""
 
 #: templates/comments.html:5
 msgid "Comments"
-msgstr "Athugasemdir"
+msgstr ""
 
 #: templates/comments.html:9
 msgid "wrote"
-msgstr "skrifaði"
+msgstr ""
 
 #: templates/comments.html:23
 msgid "Add comment"
-msgstr "Bæta við athugasemd"
+msgstr ""
 
 #: templates/guestbook.html:20 templates/guestbook_form.html:8
 msgid "Submit entry"
-msgstr "Senda færslu"
+msgstr ""
 
 #: templates/login.html:7
 msgid "Log in"
-msgstr "Skrá inn"
+msgstr ""
 
 #: templates/names/compare.html:4 templates/names/names.html:33
 msgid "Compare lists"
@@ -231,6 +228,3 @@ msgstr ""
 #: templates/names/names.html:32
 msgid "See names"
 msgstr ""
-
-#~ msgid "Blog"
-#~ msgstr "Blogg"

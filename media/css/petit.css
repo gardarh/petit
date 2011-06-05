@@ -7,7 +7,7 @@ body {
   font-size: 12pt;
   line-height: 1.8em;
   color: #222;
-  background: #BCFB30;
+  background: #C2E970;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
@@ -139,9 +139,15 @@ ul.errorlist li {
 	padding-top: 20px;
 }
 
+.odd { background-color: #EAEAEA; }
+.even { background-color: #FFF; }
+
+.blogrecord-container {
+	padding: 4px;
+}
 .blogrecord {
-	margin-top: 1em;
 	padding: 0.2em;
+	margin-bottom: 12px;
 } .blogrecord .title {
 	font-weight: bold;
 	font-size: 1.2em;
@@ -249,18 +255,20 @@ input[type=submit] {
 	clear: none;
 } .single-image .caption-edit .submit label {
 	visibility: hidden;
-} .single-image .comment-form {
-	margin-bottom: 24px;
-} .single-image .comment-form .comment textarea {
-	width: 500px;
-	height: 100px;
-}
+} 
 
 .user-comments {
+} .user-comments .heading {
+	font-size: 1em;
+	font-weight:bold;
+	margin-bottom: 12px;
+	border-bottom: 1px solid black;
+
 } .user-comments .user-comment .name {
+	color: #999;
 	float: left;
 	display: inline;
-	font-size: 1.2em;
+	font-size: 1em;
 	width: 400px;
 } .user-comments .user-comment .date {
 	color: #999;
@@ -277,6 +285,13 @@ input[type=submit] {
 	margin-bottom: 10px;
 	border: 1px dotted #BBB;
 }
+.comment-form {
+	margin-bottom: 24px;
+} .comment-form .comment textarea {
+	width: 500px;
+	height: 100px;
+}
+
 
 
 /* single album page and multiple albums page */
@@ -314,6 +329,21 @@ input[type=submit] {
 } .albums .album .caption .link a {
 	text-decoration: none;
 } .albums .album .caption .date_taken {
+}
+
+/* videos */
+.videos {
+} .videos .video .container {
+	margin-bottom: 24px;
+	border: 1px solid black;
+	padding: 4px;
+} .videos .video .container .title {
+	text-align: center;
+	font-size: 1.4em;
+	margin-bottom: 6px;
+} .videos .video .container .object {
+	text-align: center;
+	margin-bottom: 12px;
 }
 
 .icon {

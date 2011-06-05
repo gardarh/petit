@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load petit_extras %}
 
 {% block page_heading %}{% trans "Diary" %}{% endblock %}
 {% block content %}
 {% for blog in blogs %}
-{% include "blogrecord.html" %}
-{% endfor %}
+<div class="{% cycle "even" "odd" %} blogrecord-container">
+	{% include "blogrecord.html" %}
+	{% include "comments.html" with comments=blog.comments form=comment_form addvars="blog_id,"|addint:blog.id %}
+	{% endfor %}
+</div>
 {% endblock %}

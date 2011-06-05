@@ -4,8 +4,8 @@ from django.core.files.base import ContentFile
 import settings
 from django.utils.translation import ugettext_lazy as _
 
+import zipfile, os, datetime, collections
 import Image as PyImage
-import zipfile, os, datetime
 from cStringIO import StringIO
 from utils import EXIF
 
@@ -20,11 +20,24 @@ ORIENTATIONS = {
 	, 8:90
 }
 
+class Comment(models.Model):
+	name = models.CharField(_("Name"), max_length=256)
+	comment = models.TextField(_("Comment"))
+	date = models.DateTimeField(_("Date"), auto_now_add=True)
+	ip = models.IPAddressField(_("IP Address"))
+
+	class Meta:
+		ordering = ['date']
+
+	def __unicode__(self):
+		return "%s by %s at %s" % (self.comment, self.name, self.date.strftime("%Y-%m-%d"))
+
 class Image(models.Model):
 	title = models.CharField(max_length=256,null=True,blank=True)
 	image = models.ImageField(upload_to='uploaded')
 	text = models.TextField(null=True,blank=True)
 	date_taken = models.DateTimeField(null=True,blank=True)
+	comments = models.ManyToManyField(Comment, blank=True)
 
 	def generate_images(self):
 		orientation_key = self.EXIF.get('Image Orientation', None)
@@ -85,7 +98,7 @@ class Image(models.Model):
 	def save(self, *args, **kwargs):
 		generate_images = kwargs.pop('generate_images',True)
 		clean_dict = {}
-		if not self.date_taken or True:
+		if not self.date_taken:
 			exif_date = self.EXIF.get('EXIF DateTimeOriginal', None)
 			if exif_date:
 				self.date_taken = datetime.datetime.strptime(exif_date.values,'%Y:%m:%d %H:%M:%S')
@@ -96,15 +109,11 @@ class Image(models.Model):
 		if generate_images:
 			self.generate_images()
 
-class ImageComment(models.Model):
-	name = models.CharField(max_length=256)
-	comment = models.TextField()
-	date = models.DateTimeField(auto_now_add=True)
-	image = models.ForeignKey(Image)
-	ip = models.IPAddressField()
-
-	class Meta:
-		ordering = ['date']
+class Video(models.Model):
+	title = models.CharField(max_length=256)
+	date = models.DateTimeField()
+	embed_code = models.TextField(blank=True)
+	comments = models.ManyToManyField(Comment, blank=True)
 
 class Blog(models.Model):
 	author = models.ForeignKey(User)
@@ -113,6 +122,7 @@ class Blog(models.Model):
 	text = models.TextField()
 	display = models.BooleanField(default=True)
 	images = models.ManyToManyField(Image,blank=True)
+	comments = models.ManyToManyField(Comment, blank=True)
 
 	def __unicode__(self):
 		return '%s (%s)' % (self.title,self.date)
@@ -121,11 +131,11 @@ class Blog(models.Model):
 		ordering = ['date']
 
 class Guestbook(models.Model):
-	author = models.CharField(max_length=256)
-	date = models.DateTimeField(auto_now_add=True)
+	author = models.CharField(_("Name"), max_length=256)
+	date = models.DateTimeField(_("Date"), auto_now_add=True)
 	text = models.TextField(_("Message"))
-	display = models.BooleanField(default=True)
-	ip = models.IPAddressField()
+	display = models.BooleanField(_("Display"), default=True)
+	ip = models.IPAddressField(_("IP Address"))
 
 	def __unicode__(self):
 		return '%s (%s)' % (self.author,self.date)
@@ -158,10 +168,17 @@ class Album(models.Model):
 		return '%s (%s)' % (self.title, self.date)
 
 	def date_range(self):
-		return (self.images.all()[0].date_taken, self.images.latest('date_taken').date_taken) if self.images.count() > 0 else None
+		return collections.namedtuple('DateRange',['begins','ends'])(self.images.all()[0].date_taken, self.images.latest('date_taken').date_taken) if self.images.count() > 0 else None
 
 	def num_images(self):
 		return self.images.count()
+
+	def save(self, *args, **kwargs):
+		if self.id:
+			daterange = self.date_range()
+			if not self.date and daterange:
+				self.date = daterange.ends
+		return super(Album, self).save(*args, **kwargs)
 
 class Page(models.Model):
 	heading = models.CharField(max_length=64,blank=True)
@@ -176,11 +193,7 @@ class GalleryUpload(models.Model):
 	zip_file = models.FileField(_('images file (.zip)'), upload_to='%s/%s/tmp/' % (settings.MEDIA_ROOT, settings.GALLERY_DIR),
 								help_text=_('Select a .zip file of images to upload into a new Gallery.'))
 	album = models.ForeignKey(Album, null=True, blank=True, help_text=_('Select a album to add these images to. Leave this empty to create a new album from the supplied title.'))
-	title = models.CharField(_('title'), max_length=75, help_text=_('All photos in the gallery will be given a title made up of the gallery title + a sequential number.'))
-	caption = models.TextField(_('caption'), blank=True, help_text=_('Caption will be added to all photos.'))
-	description = models.TextField(_('description'), blank=True, help_text=_('A description of this Gallery.'))
-	is_public = models.BooleanField(_('is public'), default=True, help_text=_('Uncheck this to make the uploaded gallery and included photographs private.'))
-	#tags = models.CharField(max_length=255, blank=True, verbose_name=_('tags'))
+	title = models.CharField(_('title'), max_length=75, help_text=_('If no album is provided above you must enter a title.'), blank=True)
 
 	class Meta:
 		verbose_name = _('gallery upload')
@@ -199,7 +212,6 @@ class GalleryUpload(models.Model):
 			bad_file = zipf.testzip()
 			if bad_file:
 				raise Exception('"%s" in the .zip archive is corrupt.' % bad_file)
-			count = 1
 			if not self.album:
 				self.album = Album(title=self.title, date=datetime.datetime.now())
 				self.album.save()
@@ -221,7 +233,6 @@ class GalleryUpload(models.Model):
 					except Exception, e:
 						# if a "bad" file is found we just skip it.
 						continue
-					# TODO:detect img date taken via exif
 					img = Image(title='', text='',date_taken=datetime.datetime.now())
 					img.image.save(filename, ContentFile(data))
 					img.save()

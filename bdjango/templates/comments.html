@@ -1,0 +1,25 @@
+{% load i18n %}
+{% load petit_extras %}
+<div class="user-comments">
+	<div class="heading">
+		{% trans "Comments" %}
+	</div>
+	{% for comment in comments.all %}
+	<div class="user-comment">
+		<div class="name">{{ comment.name }} {% trans "wrote" %}:</div>
+		<div class="date">{{ comment.date|date:"j F, H:i" }}</div>
+		<div class="comment">{{ comment.comment|linebreaksbr }}</div>
+	</div>
+	{% endfor %}
+</div>
+
+<div class="comment-form">
+	<form method="POST" action=".">
+		{% csrf_token %}
+		{% for key,val in addvars|loadvars %}
+		<input type="hidden" name="{{ key }}" value="{{ val }}" />
+		{% endfor %}
+		{% include "base_form.html" with form=comment_form %}
+		<input type="submit" name="submit_comment" value="{% trans 'Add comment' %}" />
+	</form>
+</div>

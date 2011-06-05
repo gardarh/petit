@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="form_container">
 	{{ form.non_field_errors }}
 	{%for field in form %}
@@ -5,9 +6,9 @@
 	{%endfor%}
 	{% if include_submit %}
 		<div class="item submit">
-			<label>Submit</label>
+			<label>{% trans "Submit</label>
 			<div class="field">
-				<input type="submit" name="{% if submit_name %}{{submit_name}}{% else %}submit{% endif %}" value="{% if submit_value %}{{submit_value}}{% else %}Submit{% endif %}" />
+				<input type="submit" name="{% if submit_name %}{{submit_name}}{% else %}submit{% endif %}" value="{% if submit_value %}{{submit_value}}{% else %}{% trans "Submit" %}{% endif %}" />
 			</div>
 		</div>
 	{% endif %}

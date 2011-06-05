@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load petit_extras %}
+{% block page_heading %}{% trans "Videos" %}{% endblock %}
+{% block content %}
+<div class="videos">
+	{% for video in videos %}
+	<div class="video">
+		<div class="container">
+			<div class="title">
+				{{ video.title }}
+			</div>
+			<div class="object">
+				{{ video.embed_code|safe }}
+			</div>
+			<div class="comments">
+				{% include "comments.html" with comments=video.comments form=comment_form addvars="video_id,"|addint:video.id %}
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
+

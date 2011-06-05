@@ -42,23 +42,7 @@
 	</div>
 	{% endif %}
 
-	<div class="user-comments">
-		{% for comment in image.imagecomment_set.all %}
-		<div class="user-comment">
-			<div class="name">{{ comment.name }}</div>
-			<div class="date">{{ comment.date|date:"j F, H:i" }}</div>
-			<div class="comment">{{ comment.comment|linebreaksbr }}</div>
-		</div>
-		{% endfor %}
-	</div>
-
-	<div class="comment-form">
-		<form method="POST" action=".">
-			{% csrf_token %}
-			{% include "base_form.html" with form=comment_form %}
-			<input type="submit" name="submit_comment" value="{% trans 'Add comment' %}" />
-		</form>
-	</div>
+	{% include "comments.html" with comments=image.comments form=comment_form %}
 
 </div>
 {% endblock %}

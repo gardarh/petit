@@ -22,10 +22,15 @@ urlpatterns += patterns('petit.views',
 
 	(r'^$', 'page', {'slug':'forsida'}),
 	(r'^pages/([a-z]+)/$', 'page'),
+
     (r'^diary/$', 'diary'),
+
     (r'^guestbook/$', 'guestbook'),
+
     (r'^images/(\d+)/$', 'images'),
     (r'^albums/$', 'albums'),
     (r'^albums/(\d+)/$', 'album'),
     (r'^albums/(\d+)/(\d+)/$', 'album_image'),
-	)
+
+    (r'^videos/$', 'videos'),
+)
