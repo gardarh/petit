@@ -11,7 +11,7 @@ class AlbumAdmin(admin.ModelAdmin):
 	filter_horizontal = ('images',)
 
 class ImageAdmin(admin.ModelAdmin):
-	list_display = ('id','title','date_taken')
+	list_display = ('id','title','date_taken','in_albums')
 	search_fields = ('id','title','album__id','album__title')
 	filter_horizontal = ('comments',)
 

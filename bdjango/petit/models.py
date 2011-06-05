@@ -80,6 +80,9 @@ class Image(models.Model):
 	def __unicode__(self):
 		return '%s (%s)' % (self.title, self.date_taken)
 
+	def in_albums(self):
+		return ', '.join([a.title for a in self.album_set.all()])
+
 	class Meta:
 		ordering = ['date_taken','id']
 
@@ -97,8 +100,9 @@ class Image(models.Model):
 
 	def save(self, *args, **kwargs):
 		generate_images = kwargs.pop('generate_images',True)
+		date_from_image = kwargs.pop('date_from_image',False)
 		clean_dict = {}
-		if not self.date_taken:
+		if not self.date_taken or date_from_image:
 			exif_date = self.EXIF.get('EXIF DateTimeOriginal', None)
 			if exif_date:
 				self.date_taken = datetime.datetime.strptime(exif_date.values,'%Y:%m:%d %H:%M:%S')
@@ -235,6 +239,6 @@ class GalleryUpload(models.Model):
 						continue
 					img = Image(title='', text='',date_taken=datetime.datetime.now())
 					img.image.save(filename, ContentFile(data))
-					img.save()
+					img.save(date_from_image=True)
 					self.album.images.add(img)
 			zipf.close()
