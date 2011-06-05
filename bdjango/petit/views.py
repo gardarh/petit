@@ -4,8 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from models import Blog, Guestbook, Image, Album, Page, Comment, Video
-from forms import GuestbookForm, PasswordForm, ImageSettingsForm, CommentForm
+from models import Blog, Guestbook, Image, Album, Page, Video, VideoComment, ImageComment, BlogComment
+from forms import GuestbookForm, PasswordForm, ImageSettingsForm, VideoCommentForm, ImageCommentForm, BlogCommentForm
 from decorators import password_protect
 import settings
 
@@ -36,11 +36,12 @@ def page(request,slug):
 
 @password_protect
 def diary(request):
-	comment_instance = Comment(ip=request.META.get('HTTP_X_REAL_IP',request.META['REMOTE_ADDR']),name=request.COOKIES.get('comment_name',None))
-	comment_form = CommentForm(instance=comment_instance, data=request.POST if request.method == "POST" and 'submit_comment' in request.POST else None)
+	comment_instance = BlogComment(ip=request.META.get('HTTP_X_REAL_IP',request.META['REMOTE_ADDR']),name=request.COOKIES.get('comment_name',None))
+	comment_form = BlogCommentForm(instance=comment_instance, data=request.POST if request.method == "POST" and 'submit_comment' in request.POST else None)
 	if request.method == "POST" and 'submit_comment' in request.POST and comment_form.is_valid():
+		comment_instance.blog = Blog.objects.get(id=int(request.POST['blog_id']))
 		comment = comment_form.save()
-		Blog.objects.get(id=int(request.POST['blog_id'])).comments.add(comment)
+		
 		messages.success(request, _("Comment added"))
 		response = HttpResponseRedirect('/diary/')
 		response.set_cookie('comment_name', value=comment_form.cleaned_data['name'].encode("UTF-8"), max_age=60*60*24*100)
@@ -76,11 +77,11 @@ def images(request, image_id):
 
 @password_protect
 def videos(request):
-	comment_instance = Comment(ip=request.META.get('HTTP_X_REAL_IP',request.META['REMOTE_ADDR']),name=request.COOKIES.get('comment_name',None))
-	comment_form = CommentForm(instance=comment_instance, data=request.POST if request.method == "POST" and 'submit_comment' in request.POST else None)
+	comment_instance = VideoComment(ip=request.META.get('HTTP_X_REAL_IP',request.META['REMOTE_ADDR']),name=request.COOKIES.get('comment_name',None))
+	comment_form = VideoCommentForm(instance=comment_instance, data=request.POST if request.method == "POST" and 'submit_comment' in request.POST else None)
 	if request.method == "POST" and 'submit_comment' in request.POST and comment_form.is_valid():
+		comment_instance.video = Video.objects.get(id=int(request.POST['video_id']))
 		comment = comment_form.save()
-		Video.objects.get(id=int(request.POST['video_id'])).comments.add(comment)
 		messages.success(request, _("Comment added"))
 		response = HttpResponseRedirect('/videos/')
 		response.set_cookie('comment_name', value=comment_form.cleaned_data['name'].encode("UTF-8"), max_age=60*60*24*100)
@@ -107,11 +108,10 @@ def album_image(request,album_id,image_id):
 	album = Album.objects.get(id=int(album_id))
 	image = Image.objects.get(id=int(image_id), album=album)
 	titleform = None
-	comment_instance = Comment(ip=request.META.get('HTTP_X_REAL_IP',request.META['REMOTE_ADDR']),name=request.COOKIES.get('comment_name',None))
-	comment_form = CommentForm(instance=comment_instance, data=request.POST if request.method == "POST" and 'submit_comment' in request.POST else None)
+	comment_instance = ImageComment(ip=request.META.get('HTTP_X_REAL_IP',request.META['REMOTE_ADDR']), name=request.COOKIES.get('comment_name',None), image=image)
+	comment_form = ImageCommentForm(instance=comment_instance, data=request.POST if request.method == "POST" and 'submit_comment' in request.POST else None)
 	if request.method == "POST" and 'submit_comment' in request.POST and comment_form.is_valid():
 		comment = comment_form.save()
-		image.comments.add(comment)
 		messages.success(request, _("Comment added"))
 		response = HttpResponseRedirect('/albums/%d/%d' % (album.id, image.id))
 		response.set_cookie('comment_name', value=comment_form.cleaned_data['name'].encode("UTF-8"), max_age=60*60*24*100)

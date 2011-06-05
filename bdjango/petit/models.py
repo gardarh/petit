@@ -20,24 +20,12 @@ ORIENTATIONS = {
 	, 8:90
 }
 
-class Comment(models.Model):
-	name = models.CharField(verbose_name=_("Name"), max_length=256)
-	comment = models.TextField(verbose_name=_("Comment"))
-	date = models.DateTimeField(verbose_name=_("Date"), auto_now_add=True)
-	ip = models.IPAddressField(verbose_name=_("IP Address"))
-
-	class Meta:
-		ordering = ['date']
-
-	def __unicode__(self):
-		return "%s by %s at %s" % (self.comment, self.name, self.date.strftime("%Y-%m-%d"))
 
 class Image(models.Model):
 	title = models.CharField(max_length=256,null=True,blank=True)
 	image = models.ImageField(upload_to='uploaded')
 	text = models.TextField(null=True,blank=True)
 	date_taken = models.DateTimeField(null=True,blank=True)
-	comments = models.ManyToManyField(Comment, blank=True)
 
 	def generate_images(self):
 		orientation_key = self.EXIF.get('Image Orientation', None)
@@ -78,7 +66,7 @@ class Image(models.Model):
 		return '%s/%07d-%s.jpg' % (settings.GALLERY_IMAGE_PATH if imgtype == 'img' else settings.GALLERY_THUMBNAIL_PATH, self.id, imgtype)
 
 	def __unicode__(self):
-		return '%s (%s)' % (self.title, self.date_taken)
+		return '%d: %s' % (self.id, self.title,)
 
 	def in_albums(self):
 		return ', '.join([a.title for a in self.album_set.all()])
@@ -117,7 +105,9 @@ class Video(models.Model):
 	title = models.CharField(max_length=256)
 	date = models.DateTimeField()
 	embed_code = models.TextField(blank=True)
-	comments = models.ManyToManyField(Comment, blank=True)
+
+	def __unicode__(self):
+		return '%d: %s' % (self.id, self.title,)
 
 class Blog(models.Model):
 	author = models.ForeignKey(User)
@@ -126,10 +116,9 @@ class Blog(models.Model):
 	text = models.TextField()
 	display = models.BooleanField(default=True)
 	images = models.ManyToManyField(Image,blank=True)
-	comments = models.ManyToManyField(Comment, blank=True)
 
 	def __unicode__(self):
-		return '%s (%s)' % (self.title,self.date)
+		return '%d: %s' % (self.id, self.title)
 
 	class Meta:
 		ordering = ['date']
@@ -242,3 +231,25 @@ class GalleryUpload(models.Model):
 					img.save(date_from_image=True)
 					self.album.images.add(img)
 			zipf.close()
+
+class Comment(models.Model):
+	name = models.CharField(verbose_name=_("Name"), max_length=256)
+	comment = models.TextField(verbose_name=_("Comment"))
+	date = models.DateTimeField(verbose_name=_("Date"), auto_now_add=True)
+	ip = models.IPAddressField(verbose_name=_("IP Address"))
+
+	class Meta:
+		ordering = ['date']
+		abstract = True
+
+	def __unicode__(self):
+		return "%s by %s at %s" % (self.comment, self.name, self.date.strftime("%Y-%m-%d"))
+
+class ImageComment(Comment):
+	image = models.ForeignKey(Image)
+
+class BlogComment(Comment):
+	blog = models.ForeignKey(Blog)
+
+class VideoComment(Comment):
+	video = models.ForeignKey(Video)

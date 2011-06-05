@@ -42,7 +42,7 @@
 	</div>
 	{% endif %}
 
-	{% include "comments.html" with comments=image.comments form=comment_form %}
+	{% include "comments.html" with comments=image.imagecomment_set form=comment_form %}
 
 </div>
 {% endblock %}

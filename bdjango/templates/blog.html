@@ -7,7 +7,7 @@
 {% for blog in blogs %}
 <div class="{% cycle "even" "odd" %} blogrecord-container">
 	{% include "blogrecord.html" %}
-	{% include "comments.html" with comments=blog.comments form=comment_form addvars="blog_id,"|addint:blog.id %}
+	{% include "comments.html" with comments=blog.blogcomment_set form=comment_form addvars="blog_id,"|addint:blog.id %}
 </div>
 {% endfor %}
 {% endblock %}

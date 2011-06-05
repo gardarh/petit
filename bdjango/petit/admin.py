@@ -1,5 +1,5 @@
 from django.contrib import admin
-from bdjango.petit.models import Blog, Image, Album, Guestbook, Page, GalleryUpload, Comment, Video
+from bdjango.petit.models import Blog, Image, Album, Guestbook, Page, GalleryUpload, Video, VideoComment, ImageComment, BlogComment
 
 class PageAdmin(admin.ModelAdmin):
 	prepopulated_fields = {"slug":('heading',)}
@@ -13,16 +13,23 @@ class AlbumAdmin(admin.ModelAdmin):
 class ImageAdmin(admin.ModelAdmin):
 	list_display = ('id','title','date_taken','in_albums')
 	search_fields = ('id','title','album__id','album__title')
-	filter_horizontal = ('comments',)
 
 class VideoAdmin(admin.ModelAdmin):
 	list_display = ('id','title','date')
 	search_fields = ('id','title','embed_code')
-	filter_horizontal = ('comments',)
 
 class CommentAdmin(admin.ModelAdmin):
 	list_display = ('id','name','comment','date','ip')
 	search_fields = ('id','name','comment','ip')
+
+class VideoCommentAdmin(CommentAdmin):
+	list_display = ('id','name','comment','date','ip','video')
+
+class ImageCommentAdmin(CommentAdmin):
+	list_display = ('id','name','comment','date','ip','image')
+
+class BlogCommentAdmin(CommentAdmin):
+	list_display = ('id','name','comment','date','ip','blog')
 
 class GuestbookAdmin(admin.ModelAdmin):
 	list_display = ('id','author','date','text','display','ip')
@@ -31,7 +38,6 @@ class GuestbookAdmin(admin.ModelAdmin):
 class BlogAdmin(admin.ModelAdmin):
 	list_display = ('id','title','author','date','display')
 	search_fields = ('id','title','text')
-	filter_horizontal = ('comments',)
 
 class GalleryUploadAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
@@ -44,4 +50,6 @@ admin.site.register(Album, AlbumAdmin)
 admin.site.register(Video, VideoAdmin)
 admin.site.register(Page, PageAdmin)
 admin.site.register(GalleryUpload, GalleryUploadAdmin)
-admin.site.register(Comment, CommentAdmin)
+admin.site.register(VideoComment, VideoCommentAdmin)
+admin.site.register(ImageComment, ImageCommentAdmin)
+admin.site.register(BlogComment, BlogCommentAdmin)

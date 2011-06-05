@@ -1,5 +1,5 @@
 from django import forms
-from models import Guestbook, Comment
+from models import Guestbook, ImageComment, VideoComment, BlogComment
 from django.utils.translation import ugettext_lazy as _
 
 class GuestbookForm(forms.ModelForm):
@@ -28,7 +28,17 @@ class ImageSettingsForm(forms.Form):
 			self.album.save()
 		self.image.save(generate_images=False)
 
-class CommentForm(forms.ModelForm):
+class ImageCommentForm(forms.ModelForm):
 	class Meta:
 		fields = ['name','comment']
-		model = Comment
+		model = ImageComment
+
+class VideoCommentForm(forms.ModelForm):
+	class Meta:
+		fields = ['name','comment']
+		model = VideoComment
+
+class BlogCommentForm(forms.ModelForm):
+	class Meta:
+		fields = ['name','comment']
+		model = BlogComment

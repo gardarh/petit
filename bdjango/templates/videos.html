@@ -14,7 +14,7 @@
 				{{ video.embed_code|safe }}
 			</div>
 			<div class="comments">
-				{% include "comments.html" with comments=video.comments form=comment_form addvars="video_id,"|addint:video.id %}
+				{% include "comments.html" with comments=video.videocomment_set form=comment_form addvars="video_id,"|addint:video.id %}
 			</div>
 		</div>
 	</div>
