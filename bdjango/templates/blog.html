@@ -8,6 +8,6 @@
 <div class="{% cycle "even" "odd" %} blogrecord-container">
 	{% include "blogrecord.html" %}
 	{% include "comments.html" with comments=blog.comments form=comment_form addvars="blog_id,"|addint:blog.id %}
-	{% endfor %}
 </div>
+{% endfor %}
 {% endblock %}
