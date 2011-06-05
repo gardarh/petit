@@ -114,6 +114,8 @@ ul.errorlist li {
 #headerblock {
 	height: 100px;
 	background-color: #5F275A;
+	background-image: url(/img/header_background.png);
+	background-repeat: right;
 } #headerblock h1 {
 	padding-top: 30px;
 	font-family: 'Indie Flower', arial, serif;
