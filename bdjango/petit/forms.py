@@ -8,10 +8,10 @@ class GuestbookForm(forms.ModelForm):
 		exclude = ['date','display','ip']
 
 class PasswordForm(forms.Form):
-	password = forms.CharField(_("Password"), widget=forms.widgets.PasswordInput)
+	password = forms.CharField(label=_("Password"), widget=forms.widgets.PasswordInput)
 
 class ImageSettingsForm(forms.Form):
-	title = forms.CharField(_("Title"),required=False)
+	title = forms.CharField(label=_("Title"),required=False)
 	use_on_album_overview = forms.BooleanField(required=False)
 
 	def __init__(self, *args, **kwargs):

@@ -21,10 +21,10 @@ ORIENTATIONS = {
 }
 
 class Comment(models.Model):
-	name = models.CharField(_("Name"), max_length=256)
-	comment = models.TextField(_("Comment"))
-	date = models.DateTimeField(_("Date"), auto_now_add=True)
-	ip = models.IPAddressField(_("IP Address"))
+	name = models.CharField(verbose_name=_("Name"), max_length=256)
+	comment = models.TextField(verbose_name=_("Comment"))
+	date = models.DateTimeField(verbose_name=_("Date"), auto_now_add=True)
+	ip = models.IPAddressField(verbose_name=_("IP Address"))
 
 	class Meta:
 		ordering = ['date']
@@ -135,11 +135,11 @@ class Blog(models.Model):
 		ordering = ['date']
 
 class Guestbook(models.Model):
-	author = models.CharField(_("Name"), max_length=256)
-	date = models.DateTimeField(_("Date"), auto_now_add=True)
-	text = models.TextField(_("Message"))
-	display = models.BooleanField(_("Display"), default=True)
-	ip = models.IPAddressField(_("IP Address"))
+	author = models.CharField(verbose_name=_("Name"), max_length=256)
+	date = models.DateTimeField(verbose_name=_("Date"), auto_now_add=True)
+	text = models.TextField(verbose_name=_("Message"))
+	display = models.BooleanField(verbose_name=_("Display"), default=True)
+	ip = models.IPAddressField(verbose_name=_("IP Address"))
 
 	def __unicode__(self):
 		return '%s (%s)' % (self.author,self.date)
@@ -194,10 +194,10 @@ class Page(models.Model):
 		return '%s' % (self.heading,)
 
 class GalleryUpload(models.Model):
-	zip_file = models.FileField(_('images file (.zip)'), upload_to='%s/%s/tmp/' % (settings.MEDIA_ROOT, settings.GALLERY_DIR),
+	zip_file = models.FileField(verbose_name=_('images file (.zip)'), upload_to='%s/%s/tmp/' % (settings.MEDIA_ROOT, settings.GALLERY_DIR),
 								help_text=_('Select a .zip file of images to upload into a new Gallery.'))
-	album = models.ForeignKey(Album, null=True, blank=True, help_text=_('Select a album to add these images to. Leave this empty to create a new album from the supplied title.'))
-	title = models.CharField(_('title'), max_length=75, help_text=_('If no album is provided above you must enter a title.'), blank=True)
+	album = models.ForeignKey(Album, verbose_name=_("album"), null=True, blank=True, help_text=_('Select a album to add these images to. Leave this empty to create a new album from the supplied title.'))
+	title = models.CharField(verbose_name=_('title'), max_length=75, help_text=_('If no album is provided above you must enter a title.'), blank=True)
 
 	class Meta:
 		verbose_name = _('gallery upload')
