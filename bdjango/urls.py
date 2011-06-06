@@ -33,4 +33,6 @@ urlpatterns += patterns('petit.views',
     (r'^albums/(\d+)/(\d+)/$', 'album_image'),
 
     (r'^videos/$', 'videos'),
+
+    (r'^newsfeed/$', 'newsfeed'),
 )

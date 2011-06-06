@@ -133,3 +133,17 @@ def album_image(request,album_id,image_id):
 			, 'comment_form': comment_form
 			}
 	return HttpResponse(loader.get_template("album_image.html").render(RequestContext(request,context)))
+
+@login_required
+def newsfeed(request):
+	num_items = 10
+	feed = []
+	for classtype in [ImageComment, VideoComment, BlogComment]:
+		feed.extend(classtype.objects.all().order_by('-date')[0:num_items])
+	feed.sort(key=lambda x:x.date, reverse=True)
+	[f.item_url() for f in feed]
+
+	context = {
+			'newsfeed': feed[0:num_items]
+			}
+	return HttpResponse(loader.get_template("newsfeed.html").render(RequestContext(request,context)))

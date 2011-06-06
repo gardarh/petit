@@ -34,6 +34,10 @@
 			<li><a href="/pages/{{ pagelink.slug }}/">{{ pagelink.heading }}</a></li>
 			{% endfor %}
 			<li><a href="/logout/">{% trans "Log out" %}</a></li>
+			{% if user.is_authenticated %}
+			<hr />
+			<li><a href="/newsfeed/">{% trans "Newsfeed" %}</a></li>
+			{% endif %}
 		</ul>
 		{% endif %}
 	</div>

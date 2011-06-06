@@ -346,6 +346,19 @@ input[type=submit] {
 	margin-bottom: 12px;
 }
 
+/* newsfeed */
+.newsfeed {
+} .newsfeed .item {
+	margin-bottom: 12px;
+	border: 1px solid #CCC;
+	padding: 4px;
+} .newsfeed .item .date {
+	display: inline-block;
+	color: #888;
+} .newsfeed .item .action {
+	display: inline-block;
+}
+
 .icon {
     padding-left:20px;
     background: url(/img/icons/add.png) no-repeat center left;

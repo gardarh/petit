@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block page_heading %}{% trans "Newsfeed" %}{% endblock %}
+{% block content %}
+<div class="newsfeed">
+	{% for comment in newsfeed %}
+	<div class="item">
+		<div class="date">{{ comment.date|date:"j F, H:i" }}</div>
+		<div class="action">
+			{% blocktrans with comment.item_type as itemtype and comment.name as name %}{{ name }} added comment to the {{ itemtype }}{% endblocktrans %} 
+			{% if comment.item_url %}<a href="{{ comment.item_url }}">{% endif %}
+				{% if comment.item_title %}{{ comment.item_title }}{% else %}{% trans "Untitled" %} #{{ comment.item.id }}{% endif %}
+				{% if comment.item_url %}</a>{% endif %}:
+			"{{ comment.comment }}"
+		</div>
+
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

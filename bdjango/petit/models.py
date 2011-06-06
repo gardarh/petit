@@ -238,6 +238,18 @@ class Comment(models.Model):
 	date = models.DateTimeField(verbose_name=_("Date"), auto_now_add=True)
 	ip = models.IPAddressField(verbose_name=_("IP Address"))
 
+	def item(self):
+		raise NotImplementedError()
+
+	def item_type(self):
+		raise NotImplementedError()
+
+	def item_title(self):
+		raise NotImplementedError()
+
+	def item_url(self):
+		raise NotImplementedError()
+
 	class Meta:
 		ordering = ['date']
 		abstract = True
@@ -248,8 +260,49 @@ class Comment(models.Model):
 class ImageComment(Comment):
 	image = models.ForeignKey(Image)
 
+	def item(self):
+		return self.image
+
+	def item_type(self):
+		return _('theimage')
+
+	def item_title(self):
+		return self.image.title
+
+	def item_url(self):
+		try:
+			return '/albums/%d/%d' % (self.image.album_set.latest('date').id, self.image.id)
+		except Album.DoesNotExist:
+			return None
+
 class BlogComment(Comment):
 	blog = models.ForeignKey(Blog)
 
+	def item(self):
+		return self.blog
+
+	def item_type(self):
+		return _('theblog')
+
+	def item_title(self):
+		return self.blog.title
+
+	def item_url(self):
+		# Hmmm, nothing special here
+		return '/diary/'
+
 class VideoComment(Comment):
 	video = models.ForeignKey(Video)
+
+	def item(self):
+		return self.video
+
+	def item_type(self):
+		return _('thevideo')
+
+	def item_title(self):
+		return self.video.title
+
+	def item_url(self):
+		# Hmmm, nothing special here
+		return '/videos/'
