@@ -109,6 +109,9 @@ ul.errorlist li {
 	margin-bottom: 6px;
 } #sidebar ul li a {
 	text-decoration: none;
+} #sidebar hr {
+	border: 1px solid black;
+	width: 80%;
 }
 
 #headerblock {
