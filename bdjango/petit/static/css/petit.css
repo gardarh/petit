@@ -65,11 +65,11 @@ ul {
 	-webkit-border-radius: 3px;
 	list-style-type: none;
 } .messages li.success {
-	background-image: url('/img/icons/tick.png');
+	background-image: url('../img/icons/tick.png');
 	background-color: #d4f685;
 	border: 1px solid #749e1e;
 } .messages li.error, ul.errorlist li {
-	background-image: url('/img/icons/cross.png');
+	background-image: url('../img/icons/cross.png');
 	background-color: #fdcea4;
 	border: 1px solid #c3450a;
 }
@@ -117,7 +117,7 @@ ul.errorlist li {
 #headerblock {
 	height: 100px;
 	background-color: #5F275A;
-	background-image: url(/img/header_background.png);
+	background-image: url(../img/header_background.png);
 	background-repeat: right;
 } #headerblock h1 {
 	padding-top: 30px;
@@ -364,10 +364,10 @@ input[type=submit] {
 
 .icon {
     padding-left:20px;
-    background: url(/img/icons/add.png) no-repeat center left;
+    background: url(../img/icons/add.png) no-repeat center left;
 }
-.edit{background-image: url(/img/icons/pencil.png);}
-.ok{background-image: url(/img/icons/tick.png);}
-.notok{background-image: url(/img/icons/cross.png);}
-.add{background-image: url(/img/icons/add.png);}
-.delete{background-image: url(/img/icons/trash.png);}
+.edit{background-image: url(../img/icons/pencil.png);}
+.ok{background-image: url(../img/icons/tick.png);}
+.notok{background-image: url(../img/icons/cross.png);}
+.add{background-image: url(../img/icons/add.png);}
+.delete{background-image: url(../img/icons/trash.png);}

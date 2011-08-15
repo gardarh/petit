@@ -2,9 +2,9 @@
 {% load i18n %}
 
 {% block frame_head %}
-	<link rel="stylesheet" type="text/css" href="/css/petit.css" />
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/petit.css" />
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Indie+Flower">
-	<script type="text/javascript" src="/js/jquery-1.6.1.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.6.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$(".messages li").fadeTo(6000,1).fadeOut(2000);
