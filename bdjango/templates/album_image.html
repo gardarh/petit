@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block page_heading %}{{ image.title }}{% endblock %}
+{% block page_heading %}{% if image.title %}{{ image.title }}{% else %}&nbsp;{% endif %}{% endblock %}
 {% block content %}
 <div class="single-image">
 	<div class="image-head">
