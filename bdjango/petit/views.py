@@ -16,7 +16,7 @@ def login(request):
 		password_form = PasswordForm(request.POST)
 		if password_form.is_valid() and password_form.cleaned_data['password'] == settings.SITE_PASSWORD:
 			response = HttpResponseRedirect('/')
-			response.set_cookie('password', value=password_form.cleaned_data['password'])
+			response.set_cookie('password', value=password_form.cleaned_data['password'], max_age=60*60*24*60) # 60 days
 			return response
 	context = {
 			'password_form': password_form

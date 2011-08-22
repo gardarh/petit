@@ -1,21 +1,40 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block page_heading %}{% if image.title %}{{ image.title }}{% else %}&nbsp;{% endif %}{% endblock %}
+{% block head %}
+<script type="text/javascript">
+$(document).keydown(function(e){
+	if (e.keyCode == 37) {  // left arrow key
+		var $prev_img = $("#prev-image-link");
+		if($prev_img.length) {
+			window.location = $prev_img.trigger('click').attr('href');
+		}
+		return false;
+	} else if (e.keyCode == 39 ) { // right arrow key
+		var $next_img = $("#next-image-link");
+		if($next_img.length) {
+			window.location = $next_img.trigger('click').attr('href');
+		}
+		return false;
+	}
+});
+</script>
+{% endblock %}
 {% block content %}
 <div class="single-image">
 	<div class="image-head">
 		{% if previous_image %}
 		<div class="previous-image image-link">
-			<a href="/albums/{{ album.id }}/{{ previous_image.id }}/">&lt;</a>
+			<a href="/albums/{{ album.id }}/{{ previous_image.id }}/" id="prev-image-link">&lt;</a>
 		</div>
 		{% endif %}
 		{% if next_image %}
 		<div class="next-image image-link">
-			<a href="/albums/{{ album.id }}/{{ next_image.id }}/">&gt;</a>
+			<a href="/albums/{{ album.id }}/{{ next_image.id }}/" id="next-image-link">&gt;</a>
 		</div>
 		{% endif %}
 		<div class="image-album">
-			{% trans "Album" %}: <a href="/albums/{{ album.id }}/">{{ album.title }}</a>
+			{% trans "Album" %}: <a href="/albums/{{ album.id }}/#img{{ image.id }}">{{ album.title }}</a>
 		</div>
 	</div>
 
@@ -46,5 +65,3 @@
 
 </div>
 {% endblock %}
-
-
