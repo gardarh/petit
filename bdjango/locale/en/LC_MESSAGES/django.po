@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-06 21:52+0000\n"
+"POT-Creation-Date: 2011-09-18 23:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,11 +25,11 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: petit/models.py:127 petit/models.py:236
+#: petit/models.py:127 petit/models.py:240
 msgid "Name"
 msgstr ""
 
-#: petit/models.py:128 petit/models.py:238
+#: petit/models.py:128 petit/models.py:242
 msgid "Date"
 msgstr ""
 
@@ -41,101 +41,102 @@ msgstr ""
 msgid "Display"
 msgstr ""
 
-#: petit/models.py:131 petit/models.py:239
+#: petit/models.py:131 petit/models.py:243
 msgid "IP Address"
 msgstr ""
 
-#: petit/models.py:186
+#: petit/models.py:190
 msgid "images file (.zip)"
 msgstr ""
 
-#: petit/models.py:187
+#: petit/models.py:191
 msgid "Select a .zip file of images to upload into a new Gallery."
 msgstr ""
 
-#: petit/models.py:188
+#: petit/models.py:192
 msgid "album"
 msgstr ""
 
-#: petit/models.py:188
+#: petit/models.py:192
 msgid ""
 "Select a album to add these images to. Leave this empty to create a new "
 "album from the supplied title."
 msgstr ""
 
-#: petit/models.py:189
+#: petit/models.py:193
 msgid "title"
 msgstr ""
 
-#: petit/models.py:189
+#: petit/models.py:193
 msgid "If no album is provided above you must enter a title."
 msgstr ""
 
-#: petit/models.py:192
+#: petit/models.py:196
 msgid "gallery upload"
 msgstr ""
 
-#: petit/models.py:193
+#: petit/models.py:197
 msgid "gallery uploads"
 msgstr ""
 
-#: petit/models.py:237
+#: petit/models.py:241
 msgid "Comment"
 msgstr ""
 
-#: petit/models.py:267
+#: petit/models.py:271
 msgid "theimage"
 msgstr "image"
 
-#: petit/models.py:285
+#: petit/models.py:289
 msgid "theblog"
 msgstr "blog"
 
-#: petit/models.py:301
+#: petit/models.py:305
 msgid "thevideo"
 msgstr "video"
 
-#: petit/views.py:45 petit/views.py:85 petit/views.py:115
+#: petit/views.py:45 petit/views.py:87 petit/views.py:118
 msgid "Comment added"
 msgstr ""
 
-#: petit/views.py:64
+#: petit/views.py:66
 msgid "Guestbook entry added"
 msgstr ""
 
-#: petit/views.py:124
+#: petit/views.py:127
 msgid "Title saved"
 msgstr ""
 
-#: templates/album_image.html:18
-msgid "Album"
-msgstr ""
+#: templates/album_image.html:54
+#, python-format
+msgid "Image %(img_no)s of %(img_count)s in"
+msgstr "Image %(img_no)s of %(img_count)s in"
 
-#: templates/albums.html:3 templates/base.html:30
+#: templates/albums.html:3 templates/base.html:33
 msgid "Albums"
 msgstr ""
 
-#: templates/base.html:28
+#: templates/base.html:31
 msgid "Frontpage"
 msgstr ""
 
-#: templates/base.html:29 templates/blog.html:5
+#: templates/base.html:32 templates/blog.html:5
 msgid "Diary"
 msgstr ""
 
-#: templates/base.html:31 templates/videos.html:4
+#: templates/base.html:34 templates/videos.html:4
 msgid "Videos"
 msgstr ""
 
-#: templates/base.html:32 templates/guestbook.html:3
+#: templates/base.html:35 templates/guestbook.html:3
 msgid "Guestbook"
 msgstr ""
 
-#: templates/base.html:36
+#: templates/base.html:39
 msgid "Log out"
 msgstr ""
 
-#: templates/base.html:39 templates/newsfeed.html:3
+#: templates/base.html:42 templates/newsfeed.html:3
 msgid "Newsfeed"
 msgstr ""
 
