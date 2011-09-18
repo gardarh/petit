@@ -7,7 +7,6 @@ body {
   font-size: 12pt;
   line-height: 1.8em;
   color: #222;
-  background: #C2E970;
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
@@ -113,25 +112,6 @@ ul.errorlist li {
 	border: 1px solid black;
 	width: 80%;
 }
-
-#headerblock {
-	height: 100px;
-	background-color: #5F275A;
-	background-image: url(../img/header_background.png);
-	background-repeat: right;
-} #headerblock h1 {
-	padding-top: 30px;
-	font-family: 'Indie Flower', arial, serif;
-	font-size: 3.5em;
-} #headerblock h1 a {
-	text-decoration: None;
-	color: #AA7FA6;
-} 
-#header_shadow {
-	background-color: #8A5085;
-	height: 10px;
-}
-
 
 #content {
 	margin-left: 150px;

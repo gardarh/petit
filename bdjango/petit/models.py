@@ -147,6 +147,10 @@ class Album(models.Model):
 	class Meta:
 		ordering = ['date','id']
 
+	def cur_image_no(self, image):
+		img_ids = [img.id for img in self.images.all()]
+		return img_ids.index(image.id) + 1
+
 	def next_image(self, image):
 		img_ids = [img.id for img in self.images.all()]
 		cur_index = img_ids.index(image.id)
@@ -306,3 +310,8 @@ class VideoComment(Comment):
 	def item_url(self):
 		# Hmmm, nothing special here
 		return '/videos/'
+
+class StyleSheetSection(models.Model):
+	name = models.CharField(max_length=255)
+	content = models.TextField(blank=True)
+	enable = models.BooleanField()

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from bdjango.petit.models import Blog, Image, Album, Guestbook, Page, GalleryUpload, Video, VideoComment, ImageComment, BlogComment
+from bdjango.petit.models import Blog, Image, Album, Guestbook, Page, GalleryUpload, Video, VideoComment, ImageComment, BlogComment, StyleSheetSection
 
 class PageAdmin(admin.ModelAdmin):
 	prepopulated_fields = {"slug":('heading',)}
@@ -39,6 +39,10 @@ class BlogAdmin(admin.ModelAdmin):
 	list_display = ('id','title','author','date','display')
 	search_fields = ('id','title','text')
 
+class StyleSheetSectionAdmin(admin.ModelAdmin):
+	list_display = ('name','content','enable')
+	search_fields = ('name','content')
+
 class GalleryUploadAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         return False # To remove the 'Save and continue editing' button
@@ -53,3 +57,4 @@ admin.site.register(GalleryUpload, GalleryUploadAdmin)
 admin.site.register(VideoComment, VideoCommentAdmin)
 admin.site.register(ImageComment, ImageCommentAdmin)
 admin.site.register(BlogComment, BlogCommentAdmin)
+admin.site.register(StyleSheetSection, StyleSheetSectionAdmin)

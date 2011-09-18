@@ -56,6 +56,8 @@ def diary(request):
 def guestbook(request):
 	instance = Guestbook(display=True,ip=request.META.get('HTTP_X_REAL_IP',request.META['REMOTE_ADDR']))
 	guestbook_form = GuestbookForm(instance=instance)
+	start_at = int(request.GET.get('start_at','0'))
+	items_per_page = 20
 
 	if request.method == "POST":
 		guestbook_form = GuestbookForm(request.POST, instance=instance)
@@ -66,7 +68,7 @@ def guestbook(request):
 
 	context = {
 			'guestbook_form': guestbook_form
-			, 'entries': Guestbook.objects.filter(display=True).order_by('date')[0:20]
+			, 'entries': Guestbook.objects.filter(display=True).order_by('-date')[start_at:start_at+items_per_page]
 			}
 	return HttpResponse(loader.get_template("guestbook.html").render(RequestContext(request,context)))
 
@@ -107,6 +109,7 @@ def album_image(request,album_id,image_id):
 
 	album = Album.objects.get(id=int(album_id))
 	image = Image.objects.get(id=int(image_id), album=album)
+
 	titleform = None
 	comment_instance = ImageComment(ip=request.META.get('HTTP_X_REAL_IP',request.META['REMOTE_ADDR']), name=request.COOKIES.get('comment_name',None), image=image)
 	comment_form = ImageCommentForm(instance=comment_instance, data=request.POST if request.method == "POST" and 'submit_comment' in request.POST else None)
@@ -131,6 +134,7 @@ def album_image(request,album_id,image_id):
 			, 'next_image': album.next_image(image)
 			, 'previous_image': album.previous_image(image)
 			, 'comment_form': comment_form
+			, 'img_no': album.cur_image_no(image)
 			}
 	return HttpResponse(loader.get_template("album_image.html").render(RequestContext(request,context)))
 

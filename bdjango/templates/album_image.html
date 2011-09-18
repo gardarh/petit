@@ -3,14 +3,31 @@
 {% block page_heading %}{% if image.title %}{{ image.title }}{% else %}&nbsp;{% endif %}{% endblock %}
 {% block head %}
 <script type="text/javascript">
-$(document).keydown(function(e){
+$(function() {
+		// scroll so image appears at top
+		var jump_pos = $("h2").offset();
+		window.scrollTo(jump_pos.left, jump_pos.top);
+});
+
+$(document).keydown(function(e) {
+	var avoid_pageflip = false;
+	var $focused = $("*:focus");
+	if($focused.length) {
+		var focused_tagName = $focused.prop("tagName").toLowerCase();
+		var avoid_pageflip = (focused_tagName == "input" && $focused.attr("type") == "text") || (focused_tagName == "textarea");
+	}
+
 	if (e.keyCode == 37) {  // left arrow key
+		if(avoid_pageflip)
+			return true;
 		var $prev_img = $("#prev-image-link");
 		if($prev_img.length) {
 			window.location = $prev_img.trigger('click').attr('href');
 		}
 		return false;
 	} else if (e.keyCode == 39 ) { // right arrow key
+		if(avoid_pageflip)
+			return true;
 		var $next_img = $("#next-image-link");
 		if($next_img.length) {
 			window.location = $next_img.trigger('click').attr('href');
@@ -34,7 +51,7 @@ $(document).keydown(function(e){
 		</div>
 		{% endif %}
 		<div class="image-album">
-			{% trans "Album" %}: <a href="/albums/{{ album.id }}/#img{{ image.id }}">{{ album.title }}</a>
+			{%blocktrans with img_no as img_seq and album.images.count as img_count and album.title as album_title %}Image {{ img_no }} of {{ img_count }} in{% endblocktrans %} <a href="/albums/{{ album.id }}/#img{{ image.id }}">{{ album.title }}</a>
 		</div>
 	</div>
 
