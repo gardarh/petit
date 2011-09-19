@@ -8,11 +8,11 @@
 		<div class="thumb-image">
 			<div "image">
 				<a name="img{{image.id}}"></a>
-				<a href="{{ image.id }}/"><img src="{{ image.get_thumb_url }}" /></a>
+				<a href="{{ image.id }}/#heading"><img src="{{ image.get_thumb_url }}" /></a>
 			</div>
 			{% if image.text %}
 			<div class="caption">
-				<a href="{{ image.id }}/">{{ image.text }}</a>
+				<a href="{{ image.id }}/#heading">{{ image.text }}</a>
 			</div>
 			{% endif %}
 		</div>

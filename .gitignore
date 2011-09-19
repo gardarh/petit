@@ -1,6 +1,11 @@
 *.pyc
 .*.sw?
-media/uploaded/*
-media/gallery/*
+media/uploaded/*.jpg
+media/uploaded/*.JPG
+media/gallery/tmp/*.zip
+media/gallery/images/*.jpg
+media/gallery/images/*.JPG
+media/gallery/thumbnails/*.jpg
+media/gallery/thumbnails/*.JPG
 bdjango/localsettings.py
 bdjango/locale/*/LC_MESSAGES/*.mo

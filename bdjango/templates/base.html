@@ -33,14 +33,11 @@
 			<li><a href="/albums/">{% trans "Albums" %}</a></li>
 			<li><a href="/videos/">{% trans "Videos" %}</a></li>
 			<li><a href="/guestbook/">{% trans "Guestbook" %}</a></li>
+			<li><a href="/newsfeed/">{% trans "Newsfeed" %}</a></li>
 			{% for pagelink in link_pages %}
 			<li><a href="/pages/{{ pagelink.slug }}/">{{ pagelink.heading }}</a></li>
 			{% endfor %}
 			<li><a href="/logout/">{% trans "Log out" %}</a></li>
-			{% if user.is_authenticated %}
-			<hr />
-			<li><a href="/newsfeed/">{% trans "Newsfeed" %}</a></li>
-			{% endif %}
 		</ul>
 		{% endif %}
 	</div>
@@ -52,6 +49,7 @@
 			{% endfor %}
 		</ul>
 		{% endif %}
+		<a name="heading"></a>
 		<h2>{% block page_heading %}{% endblock %}</h2>
 		{% block content %}{% endblock %}
 	</div>

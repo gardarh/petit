@@ -1,0 +1,56 @@
+petit project - http://github.com/gardarh/petit
+
+----------- What is this -------------
+Petit is a small django project I created to be able to share
+pictures, videos and such of my baby girl with friends and
+family. It features the following:
+ - Simple password feature - one password for all
+ - Photo album (ability for comments)
+ - Ability to embed videos from other sites (such as Vimeo or Youtube)
+ - Ability to create diary entries
+ - Guestbook
+
+This is all simple django stuff. Everything is managed through the admin
+page (/admin/) with the option to add image captions through the public
+interface once logged in.
+
+----------- Licence -------------
+This code is released under the BSD license. Do whatever you want with it.
+I'd love to get an email from you if you use this project and like it.
+
+PS. If you make any great additions to the code I don't mind adding it
+to the main branch.
+
+----------- Installation requirements -------------
+To make this stuff work you need a:
+ - Working django installation (just download the tarball from djangoproject.com)
+ - Working database (tested on MySQL but I guess others work as well)
+ - A domain name (subdomain is fine of course)
+ - Preferably something to server static stuff. Django is not good at
+   serving static stuff (nginx is good for this)
+
+----------- Installation -------------
+ - Deploy the website into a dir of your choice 
+   (I recommend the scripts/checkout_and_update.sh script to do this)
+ - Let everything under /media be writable by web server process.
+   You can achieve this by giving the folders a 0775 permissions mask
+   and letting it belong to a group (say, www-writers) which contains
+   your build user and your www user.
+ - Set up web servers, there are apache/nginx config examples in /scripts
+ - Tune your localsettings.py, you can find an example in /scripts
+ - You should be done. If you run into problems please email me (see below).
+
+----------- Maintenance -------------
+ - I recomment the scripts.checkout_and_update.sh script.
+ - Note that when you are uploading images it can take a few minutes.
+   The only way I'm aware of to process images without blocking the
+   browser is to install a seperate server (e.g. some twisted server).
+   That would make this project vastly more complicated to deploy and 
+   maintain. And requires me to do stuff. So I decided against it.
+ - Side effects of this is that you might have to tune your web server,
+   both to accomodate huge .zip files and long processing time.
+   An example of this can be seen in scripts/nginx-config
+
+-------------------------------------
+If you find a bug or just want to contact me for some reason my email address
+is the same as my github username on gmail.com.

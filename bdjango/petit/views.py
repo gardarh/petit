@@ -56,7 +56,7 @@ def diary(request):
 def guestbook(request):
 	instance = Guestbook(display=True,ip=request.META.get('HTTP_X_REAL_IP',request.META['REMOTE_ADDR']))
 	guestbook_form = GuestbookForm(instance=instance)
-	start_at = int(request.GET.get('start_at','0'))
+	start_at = max(int(request.GET.get('start_at','0')),0)
 	items_per_page = 20
 
 	if request.method == "POST":
@@ -66,9 +66,14 @@ def guestbook(request):
 			messages.success(request, _("Guestbook entry added"))
 			return HttpResponseRedirect('/guestbook/')
 
+
 	context = {
 			'guestbook_form': guestbook_form
 			, 'entries': Guestbook.objects.filter(display=True).order_by('-date')[start_at:start_at+items_per_page]
+			, 'display_next_page':len(Guestbook.objects.filter(display=True).order_by('-date')[start_at+items_per_page:]) > 0
+			, 'display_last_page':start_at>0
+			, 'next_startat':start_at+items_per_page
+			, 'last_startat':max(start_at-items_per_page,0)
 			}
 	return HttpResponse(loader.get_template("guestbook.html").render(RequestContext(request,context)))
 
@@ -140,14 +145,20 @@ def album_image(request,album_id,image_id):
 
 @login_required
 def newsfeed(request):
-	num_items = 10
+	start_at = max(int(request.GET.get('start_at','0')),0)
+	items_per_page = 20
 	feed = []
 	for classtype in [ImageComment, VideoComment, BlogComment]:
-		feed.extend(classtype.objects.all().order_by('-date')[0:num_items])
+		feed.extend(classtype.objects.all().order_by('-date')[0:start_at+items_per_page])
 	feed.sort(key=lambda x:x.date, reverse=True)
 	[f.item_url() for f in feed]
 
+	entries = feed[start_at:start_at+items_per_page]
 	context = {
-			'newsfeed': feed[0:num_items]
+			'newsfeed': entries
+			, 'display_last_page':start_at>0
+			, 'display_next_page':len(entries) == items_per_page
+			, 'next_startat':start_at+items_per_page
+			, 'last_startat':max(start_at-items_per_page,0)
 			}
 	return HttpResponse(loader.get_template("newsfeed.html").render(RequestContext(request,context)))

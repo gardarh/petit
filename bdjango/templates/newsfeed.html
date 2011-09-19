@@ -16,5 +16,9 @@
 
 	</div>
 	{% endfor %}
+	<div class="pagination-links">
+		{% if display_last_page %}<a href="?start_at={{ last_startat }}">{% trans "Last page" %}</a>{% endif %}
+		{% if display_next_page %}<a href="?start_at={{ next_startat }}">{% trans "Next page" %}</a>{% endif %}
+	</div>
 </div>
 {% endblock %}

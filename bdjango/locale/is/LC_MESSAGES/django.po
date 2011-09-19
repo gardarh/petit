@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-18 23:01+0000\n"
+"POT-Creation-Date: 2011-09-19 23:08+0000\n"
 "PO-Revision-Date: 2011-06-05 17:49+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,7 +98,7 @@ msgstr "dagbókarfærsluna"
 msgid "thevideo"
 msgstr "myndbandið"
 
-#: petit/views.py:45 petit/views.py:87 petit/views.py:118
+#: petit/views.py:45 petit/views.py:92 petit/views.py:123
 msgid "Comment added"
 msgstr "Athugasemd skráð"
 
@@ -106,11 +106,11 @@ msgstr "Athugasemd skráð"
 msgid "Guestbook entry added"
 msgstr "Færslu bætt í gestabók"
 
-#: petit/views.py:127
+#: petit/views.py:132
 msgid "Title saved"
 msgstr "Titill vistaður"
 
-#: templates/album_image.html:54
+#: templates/album_image.html:48
 #, python-format
 msgid "Image %(img_no)s of %(img_count)s in"
 msgstr "Mynd %(img_no)s af %(img_count)s í"
@@ -135,13 +135,13 @@ msgstr "Myndbönd"
 msgid "Guestbook"
 msgstr "Gestabók"
 
-#: templates/base.html:39
-msgid "Log out"
-msgstr "Skrá út"
-
-#: templates/base.html:42 templates/newsfeed.html:3
+#: templates/base.html:36 templates/newsfeed.html:3
 msgid "Newsfeed"
 msgstr "Nýjustu breytingar"
+
+#: templates/base.html:40
+msgid "Log out"
+msgstr "Skrá út"
 
 #: templates/base_form.html:11
 msgid "Submit"
@@ -159,7 +159,15 @@ msgstr "skrifaði"
 msgid "Add comment"
 msgstr "Bæta við athugasemd"
 
-#: templates/guestbook.html:20 templates/guestbook_form.html:8
+#: templates/guestbook.html:17 templates/newsfeed.html:20
+msgid "Last page"
+msgstr "Síðasta síða"
+
+#: templates/guestbook.html:18 templates/newsfeed.html:21
+msgid "Next page"
+msgstr "Næsta síða"
+
+#: templates/guestbook.html:24 templates/guestbook_form.html:8
 msgid "Submit entry"
 msgstr "Senda færslu"
 

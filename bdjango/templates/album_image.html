@@ -3,12 +3,6 @@
 {% block page_heading %}{% if image.title %}{{ image.title }}{% else %}&nbsp;{% endif %}{% endblock %}
 {% block head %}
 <script type="text/javascript">
-$(function() {
-		// scroll so image appears at top
-		var jump_pos = $("h2").offset();
-		window.scrollTo(jump_pos.left, jump_pos.top);
-});
-
 $(document).keydown(function(e) {
 	var avoid_pageflip = false;
 	var $focused = $("*:focus");
@@ -42,12 +36,12 @@ $(document).keydown(function(e) {
 	<div class="image-head">
 		{% if previous_image %}
 		<div class="previous-image image-link">
-			<a href="/albums/{{ album.id }}/{{ previous_image.id }}/" id="prev-image-link">&lt;</a>
+			<a href="/albums/{{ album.id }}/{{ previous_image.id }}/#heading" id="prev-image-link">&lt;</a>
 		</div>
 		{% endif %}
 		{% if next_image %}
 		<div class="next-image image-link">
-			<a href="/albums/{{ album.id }}/{{ next_image.id }}/" id="next-image-link">&gt;</a>
+			<a href="/albums/{{ album.id }}/{{ next_image.id }}/#heading" id="next-image-link">&gt;</a>
 		</div>
 		{% endif %}
 		<div class="image-album">

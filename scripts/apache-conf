@@ -1,0 +1,16 @@
+<VirtualHost *:8080>
+    ServerAdmin webmaster@g.is
+    ServerName petit-website.example.com
+	ErrorLog /var/log/apache2/litla.g.is-error_log
+	CustomLog /var/log/apache2/litla.g.is-access_log combined
+    
+    WSGIDaemonProcess petit-website.example.com user=www-data group=www-data threads=25
+    WSGIScriptAlias / /srv/petit-website.example.com/bdjango/petit.wsgi
+    WSGIProcessGroup petit-website.example.com
+
+    <Directory /srv/petit-website.example.com/>
+        Order deny,allow
+        Allow from all
+    </Directory>
+</VirtualHost>
+

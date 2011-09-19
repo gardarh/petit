@@ -145,18 +145,18 @@ LOGGING = {
     }
 }
 
-# APP-specific
-DATADIR = '/srv/petit/bdjango/data/'
-NAMES_DB = '%s/names.json' % (DATADIR,)
-SITE_TITLE = 'Site name'
-SITE_PASSWORD = 'foo'
-SITE_LOGIN_URL = '/login/'
-
 GALLERY_DIR = 'gallery'
 GALLERY_THUMBNAIL_PATH = '/thumbnails/'
 GALLERY_IMAGE_PATH = '/images/'
 GALLERY_THUMB_MAX_DIMENSION = 200
 GALLERY_IMG_MAX_DIMENSION = 800
+
+# You probably don't have to worry about these
+DATADIR = '/srv/petit/bdjango/data/'
+NAMES_DB = '%s/names.json' % (DATADIR,)
+SITE_TITLE = 'Site name'
+SITE_PASSWORD = 'foo'
+SITE_LOGIN_URL = '/login/'
 
 try:
 	from localsettings import *

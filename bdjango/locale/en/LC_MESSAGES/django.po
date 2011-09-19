@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-18 23:01+0000\n"
+"POT-Creation-Date: 2011-09-19 23:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,7 +95,7 @@ msgstr "blog"
 msgid "thevideo"
 msgstr "video"
 
-#: petit/views.py:45 petit/views.py:87 petit/views.py:118
+#: petit/views.py:45 petit/views.py:92 petit/views.py:123
 msgid "Comment added"
 msgstr ""
 
@@ -103,11 +103,11 @@ msgstr ""
 msgid "Guestbook entry added"
 msgstr ""
 
-#: petit/views.py:127
+#: petit/views.py:132
 msgid "Title saved"
 msgstr ""
 
-#: templates/album_image.html:54
+#: templates/album_image.html:48
 #, python-format
 msgid "Image %(img_no)s of %(img_count)s in"
 msgstr "Image %(img_no)s of %(img_count)s in"
@@ -132,12 +132,12 @@ msgstr ""
 msgid "Guestbook"
 msgstr ""
 
-#: templates/base.html:39
-msgid "Log out"
+#: templates/base.html:36 templates/newsfeed.html:3
+msgid "Newsfeed"
 msgstr ""
 
-#: templates/base.html:42 templates/newsfeed.html:3
-msgid "Newsfeed"
+#: templates/base.html:40
+msgid "Log out"
 msgstr ""
 
 #: templates/base_form.html:11
@@ -156,22 +156,30 @@ msgstr ""
 msgid "Add comment"
 msgstr ""
 
-#: templates/guestbook.html:20 templates/guestbook_form.html:8
+#: templates/guestbook.html:17 templates/newsfeed.html:20
+msgid "Last page"
+msgstr "Last page"
+
+#: templates/guestbook.html:18 templates/newsfeed.html:21
+msgid "Next page"
+msgstr "Next page"
+
+#: templates/guestbook.html:24 templates/guestbook_form.html:8
 msgid "Submit entry"
-msgstr ""
+msgstr "Submit entry"
 
 #: templates/login.html:7
 msgid "Log in"
-msgstr ""
+msgstr "Log in"
 
 #: templates/newsfeed.html:10
 #, python-format
 msgid "%(name)s added comment to the %(itemtype)s"
-msgstr ""
+msgstr "%(name)s added comment to the %(itemtype)s"
 
 #: templates/newsfeed.html:12
 msgid "Untitled"
-msgstr ""
+msgstr "Untitled"
 
 #: templates/names/compare.html:4 templates/names/names.html:33
 msgid "Compare lists"
