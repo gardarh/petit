@@ -43,6 +43,8 @@ To make this stuff work you need a:
    your build user and your www user.
  - Set up web servers, there are apache/nginx config examples in /scripts
  - Tune your localsettings.py, you can find an example in /scripts
+ - Customize your CSS by adding a StyleSheetSection in the admin. You
+   can create as many as you like - they will all be combined.
  - You should be done. If you run into problems please email me (see below).
 
 ----------- Maintenance -------------
