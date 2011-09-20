@@ -32,6 +32,11 @@ To make this stuff work you need a:
 ----------- Installation -------------
  - Deploy the website into a dir of your choice 
    (I recommend the scripts/checkout_and_update.sh script to do this)
+ - Create:
+    /media/uploaded
+    /media/gallery/images
+    /media/gallery/thumbnails
+    /media/gallery/tmp
  - Let everything under /media be writable by web server process.
    You can achieve this by giving the folders a 0775 permissions mask
    and letting it belong to a group (say, www-writers) which contains
