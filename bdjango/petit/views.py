@@ -2,7 +2,6 @@ import urllib
 from django.utils.translation import ugettext_lazy as _
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from models import Blog, Guestbook, Image, Album, Page, Video, VideoComment, ImageComment, BlogComment
 from forms import GuestbookForm, PasswordForm, ImageSettingsForm, VideoCommentForm, ImageCommentForm, BlogCommentForm
@@ -143,7 +142,6 @@ def album_image(request,album_id,image_id):
 			}
 	return HttpResponse(loader.get_template("album_image.html").render(RequestContext(request,context)))
 
-@login_required
 def newsfeed(request):
 	start_at = max(int(request.GET.get('start_at','0')),0)
 	items_per_page = 20
